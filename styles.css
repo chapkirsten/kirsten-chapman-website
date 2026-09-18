@@ -2704,6 +2704,14 @@ main {
 ================================== */
 
 @media (max-width: 850px) {
+  .subpage-title h1 {
+    font-size: clamp(58px, 17vw, 78px);
+    letter-spacing: -.07em;
+  }
+
+  .workshops-text {
+    transform: none;
+  }
 
   .subpage-hero,
   .cv-hero {
