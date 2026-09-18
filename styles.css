@@ -2833,3 +2833,215 @@ main {
   }
 
 }
+
+/* ==================================
+   BIBTEX POPUP
+================================== */
+
+.bibtex-modal {
+
+  position: fixed;
+
+  inset: 0;
+
+  background:
+    rgba(33, 26, 25, .72);
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  padding: 30px;
+
+  opacity: 0;
+
+  visibility: hidden;
+
+  transition:
+    opacity .25s ease,
+    visibility .25s ease;
+
+  z-index: 1000;
+
+}
+
+
+.bibtex-modal.open {
+
+  opacity: 1;
+
+  visibility: visible;
+
+}
+
+
+.bibtex-box {
+
+  position: relative;
+
+  width: min(700px, 100%);
+
+  max-height: 80vh;
+
+  overflow-y: auto;
+
+  padding:
+    45px
+    45px
+    40px;
+
+  background: var(--cream);
+
+  border:
+    1px solid var(--line);
+
+  box-shadow:
+    0 20px 60px rgba(33, 26, 25, .25);
+
+  transform:
+    translateY(15px);
+
+  transition:
+    transform .25s ease;
+
+}
+
+
+.bibtex-modal.open
+.bibtex-box {
+
+  transform:
+    translateY(0);
+
+}
+
+
+.bibtex-label {
+
+  display: block;
+
+  margin-bottom: 25px;
+
+  color: var(--burgundy);
+
+  font-size: 8px;
+
+  letter-spacing: .15em;
+
+}
+
+
+.bibtex-close {
+
+  position: absolute;
+
+  top: 18px;
+  right: 22px;
+
+  padding: 0;
+
+  border: none;
+
+  background: transparent;
+
+  color: var(--burgundy);
+
+  font-family: Georgia, serif;
+
+  font-size: 30px;
+
+  line-height: 1;
+
+  cursor: pointer;
+
+  transition:
+    transform .2s ease,
+    color .2s ease;
+
+}
+
+
+.bibtex-close:hover {
+
+  color: var(--burgundy-dark);
+
+  transform:
+    rotate(8deg);
+
+}
+
+
+#bibtex-content {
+
+  margin:
+    0
+    0
+    30px;
+
+  padding: 25px;
+
+  background: var(--cream-dark);
+
+  border-left:
+    3px solid var(--burgundy);
+
+  color: var(--ink);
+
+  font-family:
+    "Courier New",
+    Courier,
+    monospace;
+
+  font-size: 11px;
+
+  line-height: 1.7;
+
+  white-space: pre-wrap;
+
+  overflow-wrap: anywhere;
+
+}
+
+
+.bibtex-copy {
+
+  padding:
+    11px
+    18px;
+
+  border:
+    1px solid var(--burgundy);
+
+  background: var(--burgundy);
+
+  color: var(--cream);
+
+  font-family:
+    Arial,
+    Helvetica,
+    sans-serif;
+
+  font-size: 8px;
+
+  letter-spacing: .12em;
+
+  text-transform: uppercase;
+
+  cursor: pointer;
+
+  transition:
+    background .2s ease,
+    color .2s ease;
+
+}
+
+
+.bibtex-copy:hover {
+
+  background: transparent;
+
+  color: var(--burgundy);
+
+}
