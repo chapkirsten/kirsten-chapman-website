@@ -53,6 +53,25 @@ a {
 
 
 /* ==================================
+   ARROWS
+================================== */
+
+.arrow,
+.pub-arrow,
+.contact-card-arrow,
+.cv-bottom-arrow,
+.scholar-cta > a span {
+  font-family: Georgia, "Times New Roman", serif;
+  font-style: normal;
+}
+
+
+/* ==================================
+   SIDEBAR
+================================== */
+
+
+/* ==================================
    SIDEBAR
 ================================== */
 
