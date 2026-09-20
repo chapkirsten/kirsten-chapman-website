@@ -1,15 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Publications and research">
-  <link rel="icon" type="image/png" href="images/favicon.png">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <meta
+    name="description"
+    content="Publications and research"
+  >
+
+  <link
+    rel="icon"
+    type="image/png"
+    href="images/favicon.png"
+  >
+
   <title>Publications — Kirsten Chapman</title>
-  <link rel="stylesheet" href="styles.css">
+
+  <link
+    rel="stylesheet"
+    href="styles.css"
+  >
 </head>
 
+
 <body>
+
 
 <!-- ==============================
      SIDEBAR
@@ -18,6 +39,7 @@
 <aside class="sidebar">
 
   <div>
+
     <a href="index.html" class="logo">
       KC<span>.</span>
     </a>
@@ -26,10 +48,13 @@
       <span class="status-dot"></span>
       PhD Candidate · HCI
     </div>
+
   </div>
-  
+
+
   <nav>
-    <a href="index.html" class="active">
+
+    <a href="index.html">
       <span>01</span> About
     </a>
 
@@ -37,7 +62,10 @@
       <span>02</span> Research
     </a>
 
-    <a href="publications.html">
+    <a
+      href="publications.html"
+      class="active"
+    >
       <span>03</span> Publications
     </a>
 
@@ -47,22 +75,41 @@
 
   </nav>
 
+
   <div class="sidebar-bottom">
 
     <div class="social-links">
-      <a href="mailto:chapkirsten@gmail.com">Email ↗</a>
-      <a href="https://scholar.google.com/citations?user=ZnHVCngAAAAJ&hl=en&oi=ao">Google Scholar ↗</a>
-      <a href="https://www.linkedin.com/in/kirsten-chapman/">LinkedIn ↗</a>
+
+      <a href="mailto:chapkirsten@gmail.com">
+        Email ↗
+      </a>
+
+      <a href="https://scholar.google.com/citations?user=ZnHVCngAAAAJ&hl=en&oi=ao">
+        Google Scholar ↗
+      </a>
+
+      <a href="https://www.linkedin.com/in/kirsten-chapman/">
+        LinkedIn ↗
+      </a>
+
     </div>
 
-    <p>© 2026 Kirsten Chapman</p>
+    <p>
+      © 2026 Kirsten Chapman
+    </p>
 
   </div>
 
 </aside>
 
 
+
+<!-- ==============================
+     MAIN
+============================== -->
+
 <main>
+
 
 <!-- ==============================
      PAGE HERO
@@ -71,9 +118,17 @@
 <section class="subpage-hero">
 
   <div class="subpage-meta">
-    <span>02 / PUBLICATIONS</span>
-    <span>RESEARCH ARCHIVE</span>
+
+    <span>
+      03 / PUBLICATIONS
+    </span>
+
+    <span>
+      RESEARCH ARCHIVE
+    </span>
+
   </div>
+
 
   <div class="subpage-title">
 
@@ -121,26 +176,68 @@
 </section>
 
 
+
 <!-- ==============================
-     PUBLICATION LEGEND
+     PUBLICATION FILTERS
 ============================== -->
 
 <section class="pub-controls">
 
   <div class="section-marker">
+
     <span>↓</span>
+
     <div></div>
-    <span>ALL WORK</span>
+
+    <span>FILTER WORK</span>
+
   </div>
 
 
-  <div class="pub-legend">
-    <span>PEER-REVIEWED PAPERS</span>
-    <span>EXTENDED ABSTRACTS</span>
-    <span>WORKSHOPS</span>
+  <div
+    class="pub-legend"
+    id="publication-filters"
+  >
+
+    <button
+      class="pub-filter active"
+      type="button"
+      data-filter="all"
+    >
+      ALL WORK
+    </button>
+
+
+    <button
+      class="pub-filter"
+      type="button"
+      data-filter="paper"
+    >
+      PEER-REVIEWED PAPERS
+    </button>
+
+
+    <button
+      class="pub-filter"
+      type="button"
+      data-filter="abstract"
+    >
+      EXTENDED ABSTRACTS
+    </button>
+
+
+    <button
+      class="pub-filter"
+      type="button"
+      data-filter="workshop"
+    >
+      ORGANIZED WORKSHOPS
+    </button>
+
   </div>
 
 </section>
+
 
 
 <!-- ==============================
@@ -156,39 +253,149 @@
 
   <div class="full-publication-list">
 
-    <article class="full-publication featured-publication">
+
+    <!-- PRISM -->
+
+    <article
+      class="full-publication featured-publication"
+      data-category="paper"
+    >
 
       <div class="full-pub-top">
-        <span>CSCW · 2026</span>
-        <span>PEER-REVIEWED PAPER</span>
+
+        <span>
+          CSCW · 2026
+        </span>
+
+        <span>
+          PEER-REVIEWED PAPER
+        </span>
+
       </div>
 
+
       <h2>
-        PRISM: Evaluating a Rule-Based, Scenario-Driven Social Media Privacy Education Program for Young Autistic Adults
+        PRISM: Evaluating a Rule-Based,
+        Scenario-Driven Social Media Privacy
+        Education Program for Young Autistic Adults
       </h2>
 
+
       <p class="full-authors">
-        <strong>Kirsten Chapman</strong>,
+
+        <strong>
+          Kirsten Chapman
+        </strong>,
+
         Garrett Smith,
         Kaitlyn Klabacka,
         Joseph Thomas Bills,
         Addisyn Bushman,
         Terisa Gabrielsen,
-        Pamela J Wisniewski,
+        Pamela J. Wisniewski,
         Xinru Page
+
       </p>
+
 
       <p class="full-description">
+
         Evaluates a scenario-based privacy
         education program designed to support
-        young autistic adults in
-        navigating privacy risks on social media.
+        young autistic adults in navigating
+        privacy risks on social media.
+
       </p>
 
+
       <div class="full-pub-links">
-        <a href="#">PDF ↗</a>
-        <a href="#">ACM DL ↗</a>
-        <a href="#" class="bibtex-link" data-bibtex="prism2026">BibTeX ↗</a>
+
+        <a href="#">
+          PDF ↗
+        </a>
+
+        <a href="#">
+          ACM DL ↗
+        </a>
+
+        <a
+          href="#"
+          class="bibtex-link"
+          data-bibtex="prism2026"
+        >
+          BibTeX ↗
+        </a>
+
+      </div>
+
+    </article>
+
+
+    <!-- CSCW 2026 WORKSHOP -->
+
+    <article
+      class="full-publication"
+      data-category="workshop"
+    >
+
+      <div class="full-pub-top">
+
+        <span>
+          CSCW · 2026
+        </span>
+
+        <span>
+          ORGANIZED WORKSHOP
+        </span>
+
+      </div>
+
+
+      <h2>
+        Where Does Privacy Research Go From Here?
+        Navigating the Challenges and Paths Forward
+      </h2>
+
+
+      <p class="full-authors">
+
+        <strong>
+          Kirsten Chapman
+        </strong>,
+
+        Ozioma Oguine,
+        Kaitlyn Klabacka,
+        Andrew Cambridge,
+        Eszter Vigh,
+        Karla Badillo-Urquiola,
+        Louise Barkhuus,
+        Cori Faklaris,
+        Pamela J. Wisniewski,
+        Xinru Page
+
+      </p>
+
+
+      <p class="full-description">
+
+        Brings together privacy researchers
+        to examine emerging challenges in
+        privacy research and identify new
+        directions for the field.
+
+      </p>
+
+
+      <div class="full-pub-links">
+
+        <a href="https://cscw2026.hciprivacy.com/">
+          Workshop ↗
+        </a>
+
+        <a href="#">
+          Extended Abstract ↗
+        </a>
+
       </div>
 
     </article>
@@ -196,6 +403,7 @@
   </div>
 
 </section>
+
 
 
 <!-- ==============================
@@ -211,75 +419,157 @@
 
   <div class="full-publication-list">
 
-    <article class="full-publication">
+
+    <!-- PERSUASIVENESS -->
+
+    <article
+      class="full-publication"
+      data-category="paper"
+    >
 
       <div class="full-pub-top">
-        <span>CSCW · 2025</span>
-        <span>PEER-REVIEWED PAPER</span>
+
+        <span>
+          CSCW · 2025
+        </span>
+
+        <span>
+          PEER-REVIEWED PAPER
+        </span>
+
       </div>
 
+
       <h2>
-        Persuasiveness of Conversational Agents for Targeted Advertising: Autism and Gen-AI Chatbots
+        Persuasiveness of Conversational Agents
+        for Targeted Advertising:
+        Autism and Gen-AI Chatbots
       </h2>
 
+
       <p class="full-authors">
-        <strong>Kirsten Chapman</strong>,
+
+        <strong>
+          Kirsten Chapman
+        </strong>,
+
         Kaitlyn Klabacka,
         Garrett Smith,
         Xinru Page
+
       </p>
 
+
       <p class="full-description">
+
         Examines how autistic and non-autistic
         adults respond to persuasive advertising
         delivered through generative AI chatbots,
         and how user characteristics shape susceptibility
         to persuasion.
+
       </p>
 
+
       <div class="full-pub-links">
-        <a href="paperpdfs/persuasiveness.pdf">PDF ↗</a>
-        <a href="https://dl.acm.org/doi/abs/10.1145/3757645">ACM DL ↗</a>
-        <a href="#" class="bibtex-link" data-bibtex="chapman2025persuasiveness">BibTeX ↗</a>
+
+        <a href="paperpdfs/persuasiveness.pdf">
+          PDF ↗
+        </a>
+
+        <a href="https://dl.acm.org/doi/abs/10.1145/3757645">
+          ACM DL ↗
+        </a>
+
+        <a
+          href="#"
+          class="bibtex-link"
+          data-bibtex="chapman2025persuasiveness"
+        >
+          BibTeX ↗
+        </a>
+
       </div>
 
     </article>
 
 
-    <article class="full-publication">
+
+    <!-- A HOUSE DIVIDED -->
+
+    <article
+      class="full-publication"
+      data-category="paper"
+    >
 
       <div class="full-pub-top">
-        <span>CHI · 2025</span>
-        <span>PEER-REVIEWED PAPER</span>
+
+        <span>
+          CHI · 2025
+        </span>
+
+        <span>
+          PEER-REVIEWED PAPER
+        </span>
+
       </div>
 
+
       <h2>
-        A House Divided: How US Politics Could Shape Contact-Tracing Adoption in Future Pandemics
+        A House Divided:
+        How US Politics Could Shape
+        Contact-Tracing Adoption
+        in Future Pandemics
       </h2>
 
+
       <p class="full-authors">
+
         Garrett Smith,
-        <strong>Kirsten Chapman</strong>,
+
+        <strong>
+          Kirsten Chapman
+        </strong>,
+
         Tzu-Yu Weng,
         Haijing Hao,
         Mainack Mondal,
         Staci Smith,
         Yunan Chen,
         Xinru Page
+
       </p>
 
+
       <p class="full-description">
+
         Examines how political identity
         and partisanship shape attitudes
         toward digital contact tracing and
         willingness to adopt these technologies
         during future public health crises.
+
       </p>
 
+
       <div class="full-pub-links">
-        <a href="paperpdfs/housedivided.pdf">PDF ↗</a>
-        <a href="https://dl.acm.org/doi/full/10.1145/3706598.3713645">ACM DL ↗</a>
-        <a href="#" class="bibtex-link" data-bibtex="smith2025house">BibTeX ↗</a>
+
+        <a href="paperpdfs/housedivided.pdf">
+          PDF ↗
+        </a>
+
+        <a href="https://dl.acm.org/doi/full/10.1145/3706598.3713645">
+          ACM DL ↗
+        </a>
+
+        <a
+          href="#"
+          class="bibtex-link"
+          data-bibtex="smith2025house"
+        >
+          BibTeX ↗
+        </a>
+
       </div>
 
     </article>
@@ -287,6 +577,96 @@
   </div>
 
 </section>
+
+
+
+<!-- ==============================
+     2023
+============================== -->
+
+<section class="publication-year-section">
+
+  <div class="year-column">
+    <span>2023</span>
+  </div>
+
+
+  <div class="full-publication-list">
+
+
+    <!-- CHI 2023 WORKSHOP -->
+
+    <article
+      class="full-publication"
+      data-category="workshop"
+    >
+
+      <div class="full-pub-top">
+
+        <span>
+          CHI · 2023
+        </span>
+
+        <span>
+          ORGANIZED WORKSHOP
+        </span>
+
+      </div>
+
+
+      <h2>
+        Privacy Interventions and Education (PIE):
+        Encouraging Privacy Protective Behavioral
+        Change Online
+      </h2>
+
+
+      <p class="full-authors">
+
+        Garrett Smith,
+
+        <strong>
+          Kirsten Chapman
+        </strong>,
+
+        Zainab Agha,
+        Janet Ruppert,
+        Spring Cullen,
+        Sushmita Khan,
+        Bart Knijnenburg,
+        Jessica Vitak,
+        Priya C Kumar,
+        Pamela J. Wisniewski,
+        Xinru Page
+
+      </p>
+
+
+      <p class="full-description">
+
+        Brings together researchers
+        studying privacy interventions
+        and education to explore how
+        technology can encourage more
+        privacy-protective behaviors online.
+
+      </p>
+
+
+      <div class="full-pub-links">
+
+        <a href="https://dl.acm.org/doi/full/10.1145/3544549.3573816">
+          Extended Abstract ↗
+        </a>
+
+      </div>
+
+    </article>
+
+  </div>
+
+</section>
+
 
 
 <!-- ==============================
@@ -302,19 +682,41 @@
 
   <div class="full-publication-list">
 
-    <article class="full-publication">
+
+    <!-- PRIVACY PARADOX -->
+
+    <article
+      class="full-publication"
+      data-category="abstract"
+    >
 
       <div class="full-pub-top">
-        <span>CSCW · 2022</span>
-        <span>EXTENDED ABSTRACT</span>
+
+        <span>
+          CSCW · 2022
+        </span>
+
+        <span>
+          EXTENDED ABSTRACT
+        </span>
+
       </div>
 
+
       <h2>
-        A Privacy Paradox? Impact of Privacy Concerns on Willingness to Disclose COVID-19 Health Status in the United States
+        A Privacy Paradox?
+        Impact of Privacy Concerns on
+        Willingness to Disclose COVID-19
+        Health Status in the United States
       </h2>
 
+
       <p class="full-authors">
-        <strong>Kirsten Chapman</strong>,
+
+        <strong>
+          Kirsten Chapman
+        </strong>,
+
         Melanie Klimes,
         Braden Wellman,
         Garrett Smith,
@@ -323,37 +725,77 @@
         Yunan Chen,
         Haijing Hao,
         Xinru Page
+
       </p>
 
+
       <p class="full-description">
+
         Investigates how privacy concerns
         shape people's willingness to disclose
         COVID-19 health information and the factors
         that influence health information sharing.
+
       </p>
 
+
       <div class="full-pub-links">
-        <a href="paperpdfs/privacyparadox.pdf">PDF ↗</a>
-        <a href="https://dl.acm.org/doi/abs/10.1145/3500868.3559471">ACM DL ↗</a>
-        <a href="#" class="bibtex-link" data-bibtex="chapman2022privacy">BibTeX ↗</a>
+
+        <a href="paperpdfs/privacyparadox.pdf">
+          PDF ↗
+        </a>
+
+        <a href="https://dl.acm.org/doi/abs/10.1145/3500868.3559471">
+          ACM DL ↗
+        </a>
+
+        <a
+          href="#"
+          class="bibtex-link"
+          data-bibtex="chapman2022privacy"
+        >
+          BibTeX ↗
+        </a>
+
       </div>
 
     </article>
 
 
-    <article class="full-publication">
+
+    <!-- OTHERS HAVE THE RIGHT TO KNOW -->
+
+    <article
+      class="full-publication"
+      data-category="abstract"
+    >
 
       <div class="full-pub-top">
-        <span>SOUPS · 2022</span>
-        <span>EXTENDED ABSTRACT</span>
+
+        <span>
+          SOUPS · 2022
+        </span>
+
+        <span>
+          EXTENDED ABSTRACT
+        </span>
+
       </div>
 
+
       <h2>
-        "Others Have the Right to Know": Determinants of Willingness to Share COVID-19-Related Health Symptoms
+        "Others Have the Right to Know":
+        Determinants of Willingness to Share
+        COVID-19-Related Health Symptoms
       </h2>
 
+
       <p class="full-authors">
-        <strong>Kirsten Chapman</strong>,
+
+        <strong>
+          Kirsten Chapman
+        </strong>,
+
         Melanie Klimes,
         Braden Wellman,
         Garrett Smith,
@@ -362,17 +804,33 @@
         Staci Smith,
         Mainack Mondal,
         Xinru Page
+
       </p>
 
+
       <p class="full-description">
+
         Examines the privacy and social
         factors that shape people's willingness
         to share COVID-19 symptoms with others.
+
       </p>
 
+
       <div class="full-pub-links">
-        <a href="https://www.usenix.org/system/files/soups2022-poster105_chapman_abstract_final.pdf">PDF ↗</a>
-        <a href="#" class="bibtex-link" data-bibtex="chapman2022others">BibTeX ↗</a>
+
+        <a href="https://www.usenix.org/system/files/soups2022-poster105_chapman_abstract_final.pdf">
+          PDF ↗
+        </a>
+
+        <a
+          href="#"
+          class="bibtex-link"
+          data-bibtex="chapman2022others"
+        >
+          BibTeX ↗
+        </a>
+
       </div>
 
     </article>
@@ -381,101 +839,6 @@
 
 </section>
 
-
-<!-- ==============================
-     WORKSHOPS
-============================== -->
-
-<section class="publication-year-section">
-
-  <div class="year-column">
-    <span class="workshops-text">WORKSHOPS ORGANIZED</span>
-  </div>
-
-
-  <div class="full-publication-list">
-
-    <article class="full-publication">
-
-      <div class="full-pub-top">
-        <span>CSCW 2026</span>
-        <span>WORKSHOP</span>
-      </div>
-
-      <h2>
-        Where Does Privacy Research Go From Here? Navigating the Challenges and Paths Forward
-      </h2>
-
-      <p class="full-authors">
-        Kirsten Chapman,
-        Ozioma Oguine,
-        Kaitlyn Klabacka,
-        Andrew Cambridge,
-        Eszter Vigh,
-        Karla Badillo-Urquiola,
-        Louise Barkuus,
-        Cori Faklaris,
-        Pamela J. Wisniewski,
-        Xinru Page
-      </p>
-
-      <p class="full-description">
-        Brings together privacy researchers
-        to examine emerging challenges in
-        privacy research and identify new
-        directions for the field.
-      </p>
-
-      <div class="full-pub-links">
-        <a href="https://cscw2026.hciprivacy.com/">Workshop ↗</a>
-        <a href="#">Extended Abstract ↗</a>
-      </div>
-
-    </article>
-
-
-    <article class="full-publication">
-
-      <div class="full-pub-top">
-        <span>CHI 2023</span>
-        <span>WORKSHOP</span>
-      </div>
-
-      <h2>
-        Privacy Interventions and Education (PIE): Encouraging Privacy Protective Behavioral Change Online
-      </h2>
-
-      <p class="full-authors">
-        Garrett Smith,
-        Kirsten Chapman,
-        Zainab Agha,
-        Janet Ruppert,
-        Spring Cullen,
-        Sushmita Khan,
-        Bart Knijnenburg,
-        Jessica Vitak,
-        Priya C Kumar,
-        Pamela J Wisniewski,
-        Xinru Page
-      </p>
-
-      <p class="full-description">
-        Brings together researchers
-        studying privacy interventions
-        and education to explore how
-        technology can encourage more
-        privacy-protective behaviors online.
-      </p>
-
-      <div class="full-pub-links">
-        <a href="https://dl.acm.org/doi/full/10.1145/3544549.3573816">Extended Abstract ↗</a>
-      </div>
-
-    </article>
-
-  </div>
-
-</section>
 
 
 <!-- ==============================
@@ -489,8 +852,13 @@
   </p>
 
   <a href="https://scholar.google.com/citations?user=ZnHVCngAAAAJ&hl=en&oi=ao">
+
     Google Scholar
-    <span>↗</span>
+
+    <span>
+      ↗
+    </span>
+
   </a>
 
 </section>
@@ -499,11 +867,15 @@
 </main>
 
 
+
 <!-- ==============================
      BIBTEX POPUP
 ============================== -->
 
-<div class="bibtex-modal" id="bibtex-modal">
+<div
+  class="bibtex-modal"
+  id="bibtex-modal"
+>
 
   <div class="bibtex-box">
 
@@ -515,11 +887,19 @@
       ×
     </button>
 
-    <span class="bibtex-label">BIBTEX</span>
+
+    <span class="bibtex-label">
+      BIBTEX
+    </span>
+
 
     <pre id="bibtex-content"></pre>
 
-    <button class="bibtex-copy" id="bibtex-copy">
+
+    <button
+      class="bibtex-copy"
+      id="bibtex-copy"
+    >
       Copy BibTeX
     </button>
 
@@ -528,9 +908,21 @@
 </div>
 
 
+
 <script src="script.js"></script>
 
-<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "c75ca6f7cf0b4331afd3707bc6c81db9"}'></script><!-- End Cloudflare Web Analytics -->
+
+<!-- Cloudflare Web Analytics -->
+
+<script
+  type="module"
+  src="https://static.cloudflareinsights.com/beacon.min.js"
+  data-cf-beacon='{"token": "c75ca6f7cf0b4331afd3707bc6c81db9"}'
+></script>
+
+<!-- End Cloudflare Web Analytics -->
+
 
 </body>
+
 </html>

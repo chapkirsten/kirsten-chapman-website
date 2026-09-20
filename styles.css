@@ -3609,3 +3609,48 @@ main {
   }
 
 }
+
+/* ==================================
+   PUBLICATION FILTERS
+================================== */
+
+.pub-filter {
+  padding: 0;
+
+  background: none;
+  border: 0;
+
+  color: var(--muted);
+
+  font-family:
+    Arial,
+    Helvetica,
+    sans-serif;
+
+  font-size: inherit;
+  font-weight: inherit;
+  letter-spacing: inherit;
+
+  cursor: pointer;
+
+  transition:
+    color .2s ease,
+    opacity .2s ease;
+}
+
+
+.pub-filter:hover {
+  color: var(--burgundy);
+}
+
+
+.pub-filter.active {
+  color: var(--burgundy);
+}
+
+
+.pub-filter.active::after {
+  content: " ●";
+  font-size: .65em;
+}
+

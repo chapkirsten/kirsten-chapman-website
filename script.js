@@ -428,3 +428,111 @@ if (
   );
 
 }
+
+/* ==================================
+   PUBLICATION FILTERS
+================================== */
+
+const publicationFilters =
+  document.querySelectorAll(".pub-filter");
+
+const publications =
+  document.querySelectorAll(".full-publication");
+
+const publicationSections =
+  document.querySelectorAll(".publication-year-section");
+
+
+if (
+  publicationFilters.length > 0 &&
+  publications.length > 0
+) {
+
+  publicationFilters.forEach((filter) => {
+
+    filter.addEventListener("click", () => {
+
+      const selectedCategory =
+        filter.getAttribute("data-filter");
+
+
+      /* ------------------------------
+         UPDATE ACTIVE FILTER
+      ------------------------------ */
+
+      publicationFilters.forEach((button) => {
+
+        button.classList.remove("active");
+
+      });
+
+      filter.classList.add("active");
+
+
+      /* ------------------------------
+         FILTER EACH YEAR SECTION
+      ------------------------------ */
+
+      publicationSections.forEach((section) => {
+
+        const sectionPublications =
+          section.querySelectorAll(
+            ".full-publication"
+          );
+
+        let visibleCount = 0;
+
+
+        sectionPublications.forEach(
+          (publication) => {
+
+            const category =
+              publication.getAttribute(
+                "data-category"
+              );
+
+
+            const shouldShow =
+              selectedCategory === "all" ||
+              category === selectedCategory;
+
+
+            if (shouldShow) {
+
+              publication.style.display = "";
+              visibleCount++;
+
+            }
+
+            else {
+
+              publication.style.display = "none";
+
+            }
+
+          }
+        );
+
+
+        /* Hide the entire year if
+           nothing inside it matches */
+
+        if (visibleCount > 0) {
+
+          section.style.display = "";
+
+        }
+
+        else {
+
+          section.style.display = "none";
+
+        }
+
+      });
+
+    });
+
+  });
+
+}
