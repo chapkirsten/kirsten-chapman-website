@@ -129,13 +129,16 @@ a {
 
 
 @keyframes pulse {
-  0%, 100% {
+
+  0%,
+  100% {
     opacity: 1;
   }
 
   50% {
     opacity: .25;
   }
+
 }
 
 
@@ -159,6 +162,7 @@ a {
   color: var(--muted);
 
   font-family: Georgia, serif;
+
   font-size: 15px;
 
   transition:
@@ -168,11 +172,11 @@ a {
 
 
 .sidebar nav a span {
+  padding-top: 5px;
+
   font-family: Arial, sans-serif;
 
   font-size: 8px;
-
-  padding-top: 5px;
 }
 
 
@@ -283,7 +287,8 @@ main {
     minmax(0, 1fr)
     clamp(210px, 22vw, 300px);
 
-  gap: clamp(25px, 4vw, 70px);
+  gap:
+    clamp(25px, 4vw, 70px);
 
   align-items: end;
 }
@@ -334,10 +339,10 @@ main {
 
   z-index: 4;
 
+  width: fit-content;
+
   margin-top: 20px;
   margin-left: 5vw;
-
-  width: fit-content;
 
   font-family: Georgia, serif;
 
@@ -382,7 +387,8 @@ main {
 
   background: var(--pink);
 
-  transform: rotate(3deg);
+  transform:
+    rotate(3deg);
 }
 
 
@@ -404,7 +410,8 @@ main {
 }
 
 
-.portrait-area:hover .portrait {
+.portrait-area:hover
+.portrait {
   transform:
     translate(-3px, -3px);
 }
@@ -431,7 +438,8 @@ main {
 
   text-align: center;
 
-  transform: rotate(7deg);
+  transform:
+    rotate(7deg);
 
   z-index: 3;
 }
@@ -488,12 +496,12 @@ main {
 
 
 .scroll {
+  width: fit-content;
+
   display: flex;
   align-items: center;
 
   gap: 10px;
-
-  width: fit-content;
 
   color: var(--muted);
 
@@ -528,12 +536,12 @@ main {
 .marquee {
   overflow: hidden;
 
-  background: var(--burgundy);
-  color: var(--cream);
-
   padding:
     13px
     0;
+
+  background: var(--burgundy);
+  color: var(--cream);
 
   white-space: nowrap;
 }
@@ -564,13 +572,17 @@ main {
 
 
 @keyframes marquee {
+
   from {
-    transform: translateX(0);
+    transform:
+      translateX(0);
   }
 
   to {
-    transform: translateX(-33.3333%);
+    transform:
+      translateX(-33.3333%);
   }
+
 }
 
 
@@ -1164,8 +1176,6 @@ main {
 ================================== */
 
 .contact {
-  min-height: 600px;
-
   padding:
     90px
     clamp(35px, 7vw, 120px)
@@ -1173,58 +1183,209 @@ main {
 
   background: var(--burgundy);
   color: var(--cream);
+}
 
-  display: flex;
-  flex-direction: column;
+
+/* CONTACT HEADING */
+
+.contact-heading {
+  max-width: 900px;
 }
 
 
 .contact-small {
-  margin: 0;
+  margin:
+    0
+    0
+    30px;
 
   color: var(--pink);
 
   font-size: 8px;
+  font-weight: bold;
 
   letter-spacing: .15em;
+
+  text-transform: uppercase;
 }
 
 
-.contact-link {
-  margin: auto 0;
+.contact-heading h2 {
+  margin: 0;
 
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-
-  font-family: Georgia, serif;
+  font-family:
+    Georgia,
+    serif;
 
   font-size:
-    clamp(70px, 10vw, 150px);
+    clamp(70px, 9vw, 135px);
 
-  line-height: .85;
+  font-weight: normal;
 
-  text-decoration: none;
+  line-height: .82;
 
   letter-spacing: -.055em;
 }
 
 
-.contact-link span {
+.contact-heading h2 em {
   color: var(--pink);
 
+  font-weight: normal;
+}
+
+
+.contact-intro {
+  max-width: 430px;
+
+  margin:
+    35px
+    0
+    0;
+
+  color: #d4b9bd;
+
+  font-size: 12px;
+
+  line-height: 1.7;
+}
+
+
+/* CONTACT CARDS */
+
+.contact-links-grid {
+  width: 100%;
+
+  margin-top: 65px;
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(3, minmax(0, 1fr));
+
+  gap: 12px;
+}
+
+
+.contact-card {
+  position: relative;
+
+  min-height: 145px;
+
+  padding:
+    24px
+    55px
+    24px
+    25px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  background: transparent;
+
+  border:
+    1px solid rgba(255,255,255,.35);
+
+  color: var(--cream);
+
+  text-decoration: none;
+
   transition:
-    transform .3s ease;
+    transform .2s ease,
+    background .2s ease,
+    border-color .2s ease,
+    color .2s ease;
 }
 
 
-.contact-link:hover span {
+.contact-card:hover {
+  background: var(--cream);
+
+  border-color: var(--cream);
+
+  color: var(--burgundy);
+
   transform:
-    translate(10px, -10px);
+    translateY(-3px);
 }
 
+
+/* PRIMARY EMAIL CARD */
+
+.contact-card-primary {
+  background: var(--pink);
+
+  border-color: var(--pink);
+
+  color: var(--ink);
+}
+
+
+.contact-card-primary:hover {
+  background: var(--cream);
+
+  border-color: var(--cream);
+
+  color: var(--burgundy);
+}
+
+
+/* CARD LABEL */
+
+.contact-card-label {
+  font-size: 7px;
+  font-weight: bold;
+
+  letter-spacing: .15em;
+
+  text-transform: uppercase;
+
+  opacity: .7;
+}
+
+
+/* CARD TITLE */
+
+.contact-card-title {
+  font-family:
+    Georgia,
+    serif;
+
+  font-size:
+    clamp(20px, 2vw, 28px);
+
+  line-height: 1.1;
+}
+
+
+/* CARD ARROW */
+
+.contact-card-arrow {
+  position: absolute;
+
+  top: 22px;
+  right: 24px;
+
+  font-size: 18px;
+
+  transition:
+    transform .2s ease;
+}
+
+
+.contact-card:hover
+.contact-card-arrow {
+  transform:
+    translate(3px, -3px);
+}
+
+
+/* CONTACT FOOTER */
 
 .contact-bottom {
+  margin-top: 80px;
+
   padding-top: 20px;
 
   border-top:
@@ -1236,18 +1397,8 @@ main {
   color: #d4b9bd;
 
   font-size: 8px;
-}
 
-
-.contact-bottom div {
-  display: flex;
-
-  gap: 20px;
-}
-
-
-.contact-bottom a {
-  text-decoration: none;
+  letter-spacing: .06em;
 }
 
 
@@ -1465,8 +1616,6 @@ main {
 }
 
 
-/* FILTER WORK HEADING */
-
 .pub-controls::before {
   content: "FILTER WORK";
 
@@ -1498,8 +1647,6 @@ main {
   color: var(--muted);
 }
 
-
-/* FILTER BUTTONS */
 
 .pub-filter {
   padding:
@@ -1596,7 +1743,8 @@ main {
 .workshops-text {
   display: inline-block;
 
-  transform: translateX(-50px);
+  transform:
+    translateX(-50px);
 }
 
 
@@ -2026,50 +2174,153 @@ main {
 }
 
 
+/* ==================================
+   CV BOTTOM CTA
+================================== */
+
 .cv-bottom {
   padding:
-    100px
-    clamp(35px, 7vw, 120px);
+    70px
+    clamp(35px, 7vw, 120px)
+    80px;
 
-  background: var(--burgundy);
-  color: var(--cream);
+  border-top:
+    1px solid var(--line);
 }
 
 
 .cv-bottom > p {
-  color: var(--pink);
+  margin:
+    0
+    0
+    24px;
+
+  color: var(--muted);
 
   font-size: 9px;
+  font-weight: bold;
 
-  letter-spacing: .1em;
+  letter-spacing: .14em;
+
+  text-transform: uppercase;
 }
 
 
-.cv-bottom > a {
+.cv-bottom-links {
+  display: grid;
+
+  grid-template-columns:
+    repeat(2, minmax(0, 1fr));
+
+  gap: 14px;
+
+  max-width: 900px;
+}
+
+
+.cv-bottom-link {
+  position: relative;
+
+  min-height: 145px;
+
+  padding:
+    24px
+    55px
+    24px
+    25px;
+
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
-  align-items: center;
-
-  font-family: Georgia, serif;
-
-  font-size:
-    clamp(50px, 7vw, 100px);
 
   text-decoration: none;
-}
-
-
-.cv-bottom > a span {
-  color: var(--pink);
 
   transition:
-    transform .3s ease;
+    transform .2s ease,
+    background .2s ease,
+    border-color .2s ease;
 }
 
 
-.cv-bottom > a:hover span {
+.cv-bottom-link.primary {
+  background: var(--burgundy);
+
+  border:
+    1px solid var(--burgundy);
+
+  color: var(--cream);
+}
+
+
+.cv-bottom-link.primary:hover {
+  background: var(--burgundy-dark);
+
+  border-color: var(--burgundy-dark);
+
   transform:
-    translateY(8px);
+    translateY(-3px);
+}
+
+
+.cv-bottom-link.secondary {
+  background: transparent;
+
+  border:
+    1px solid var(--burgundy);
+
+  color: var(--burgundy);
+}
+
+
+.cv-bottom-link.secondary:hover {
+  background: var(--pink-light);
+
+  transform:
+    translateY(-3px);
+}
+
+
+.cv-bottom-label {
+  font-size: 7px;
+  font-weight: bold;
+
+  letter-spacing: .15em;
+
+  text-transform: uppercase;
+
+  opacity: .75;
+}
+
+
+.cv-bottom-title {
+  font-family:
+    Georgia,
+    serif;
+
+  font-size:
+    clamp(20px, 2vw, 28px);
+
+  line-height: 1.1;
+}
+
+
+.cv-bottom-arrow {
+  position: absolute;
+
+  top: 22px;
+  right: 24px;
+
+  font-size: 18px;
+
+  transition:
+    transform .2s ease;
+}
+
+
+.cv-bottom-link:hover
+.cv-bottom-arrow {
+  transform:
+    translate(3px, -3px);
 }
 
 
@@ -2111,7 +2362,8 @@ main {
 .bibtex-box {
   position: relative;
 
-  width: min(700px, 100%);
+  width:
+    min(700px, 100%);
 
   max-height: 80vh;
 
@@ -2128,7 +2380,8 @@ main {
     1px solid var(--line);
 
   box-shadow:
-    0 20px 60px rgba(33, 26, 25, .25);
+    0 20px 60px
+    rgba(33, 26, 25, .25);
 
   transform:
     translateY(15px);
@@ -2269,6 +2522,8 @@ main {
 
   margin-top: 55px;
 
+  padding-bottom: 4px;
+
   color: var(--burgundy);
 
   font-size: 10px;
@@ -2280,8 +2535,6 @@ main {
 
   border-bottom:
     1px solid var(--burgundy);
-
-  padding-bottom: 4px;
 
   transition:
     opacity .2s ease;
@@ -2307,8 +2560,6 @@ main {
     var(--cream-dark);
 }
 
-
-/* NEWS HEADING */
 
 .news-heading {
   margin:
@@ -2368,8 +2619,6 @@ main {
 }
 
 
-/* NEWS LIST */
-
 .news-list {
   max-width: 1100px;
 
@@ -2383,8 +2632,6 @@ main {
     1px solid var(--line);
 }
 
-
-/* INDIVIDUAL NEWS ITEM */
 
 .news-item {
   display: grid;
@@ -2403,8 +2650,6 @@ main {
     1px solid var(--line);
 }
 
-
-/* NEWS DATE */
 
 .news-date {
   padding-top: 4px;
@@ -2434,8 +2679,6 @@ main {
   font-size: 12px;
 }
 
-
-/* NEWS CONTENT */
 
 .news-content {
   max-width: 720px;
@@ -2538,7 +2781,11 @@ main {
 
   position: absolute;
 
-  inset: 8px -8px -8px 8px;
+  inset:
+    8px
+    -8px
+    -8px
+    8px;
 
   border:
     1px solid var(--pink);
@@ -2669,7 +2916,9 @@ main {
   .portrait-area {
     order: -1;
 
-    width: clamp(200px, 32vw, 280px);
+    width:
+      clamp(200px, 32vw, 280px);
+
     max-width: 280px;
 
     align-self: flex-end;
@@ -2859,6 +3108,45 @@ main {
   }
 
 
+  /* CONTACT */
+
+  .contact {
+    padding:
+      70px
+      clamp(25px, 7vw, 60px)
+      30px;
+  }
+
+
+  .contact-heading h2 {
+    font-size:
+      clamp(65px, 19vw, 95px);
+  }
+
+
+  .contact-links-grid {
+    margin-top: 50px;
+
+    grid-template-columns: 1fr;
+
+    gap: 10px;
+  }
+
+
+  .contact-card {
+    min-height: 115px;
+  }
+
+
+  .contact-bottom {
+    margin-top: 60px;
+
+    gap: 20px;
+
+    flex-direction: column;
+  }
+
+
   /* SUBPAGES */
 
   .subpage-hero {
@@ -2897,7 +3185,7 @@ main {
   }
 
 
-  /* PUBLICATION STATS — 2 × 2 ON MOBILE */
+  /* PUBLICATION STATS */
 
   .publication-stats {
     width: 100%;
@@ -3003,6 +3291,26 @@ main {
     grid-template-columns: 1fr;
   }
 
+
+  .cv-bottom {
+    padding:
+      55px
+      clamp(25px, 7vw, 60px)
+      65px;
+  }
+
+
+  .cv-bottom-links {
+    grid-template-columns: 1fr;
+
+    gap: 12px;
+  }
+
+
+  .cv-bottom-link {
+    min-height: 125px;
+  }
+
 }
 
 
@@ -3026,8 +3334,7 @@ main {
       0
       55px;
 
-    grid-template-columns:
-      1fr;
+    grid-template-columns: 1fr;
 
     gap: 25px;
   }
