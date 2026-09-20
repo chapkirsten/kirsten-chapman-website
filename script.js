@@ -185,6 +185,10 @@ bibtexLinks.forEach((link) => {
       return;
     }
 
+    if (!bibtexContent || !bibtexModal) {
+      return;
+    }
+
     bibtexContent.textContent =
       citation;
 
@@ -201,6 +205,10 @@ bibtexLinks.forEach((link) => {
 // Close popup
 
 function closeBibtexModal() {
+
+  if (!bibtexModal) {
+    return;
+  }
 
   bibtexModal.classList.remove("open");
 
@@ -261,7 +269,7 @@ document.addEventListener(
 
 // Copy BibTeX
 
-if (bibtexCopy) {
+if (bibtexCopy && bibtexContent) {
 
   bibtexCopy.addEventListener(
     "click",
@@ -302,9 +310,10 @@ if (bibtexCopy) {
 
 }
 
-/* ==================================
-   NEWS ARCHIVE
-================================== */
+
+// --------------------------------
+// NEWS ARCHIVE
+// --------------------------------
 
 const recentNews =
   document.getElementById("recent-news");
@@ -334,9 +343,7 @@ if (
     );
 
 
-  /* ==================================
-     SORT NEWS BY DATE
-  ================================== */
+  // Sort news by date
 
   newsItems.sort((a, b) => {
 
@@ -351,9 +358,7 @@ if (
   });
 
 
-  /* ==================================
-     KEEP 5 MOST RECENT
-  ================================== */
+  // Keep five most recent items visible
 
   newsItems.forEach((item, index) => {
 
@@ -372,9 +377,7 @@ if (
   });
 
 
-  /* ==================================
-     SHOW / HIDE ARCHIVE BUTTON
-  ================================== */
+  // Show or hide archive button
 
   if (olderNews.children.length === 0) {
 
@@ -389,9 +392,7 @@ if (
   }
 
 
-  /* ==================================
-     OPEN / CLOSE ARCHIVE
-  ================================== */
+  // Open or close archive
 
   archiveToggle.addEventListener(
     "click",
@@ -419,19 +420,24 @@ if (
         );
 
 
-      label.textContent =
-        isOpen
-          ? "View older news"
-          : "Hide older news";
+      if (label) {
+
+        label.textContent =
+          isOpen
+            ? "View older news"
+            : "Hide older news";
+
+      }
 
     }
   );
 
 }
 
-/* ==================================
-   PUBLICATION FILTERS
-================================== */
+
+// --------------------------------
+// PUBLICATION FILTERS
+// --------------------------------
 
 const publicationFilters =
   document.querySelectorAll(".pub-filter");
@@ -448,91 +454,133 @@ if (
   publications.length > 0
 ) {
 
+  function filterPublications(selectedCategory) {
+
+    publicationSections.forEach((section) => {
+
+      const sectionPublications =
+        section.querySelectorAll(
+          ".full-publication"
+        );
+
+      let visibleCount = 0;
+
+
+      sectionPublications.forEach(
+        (publication) => {
+
+          const category =
+            publication.getAttribute(
+              "data-category"
+            );
+
+
+          /*
+            MAIN WORK
+            ---------
+            Shows:
+            - Peer-reviewed papers
+            - Extended abstracts
+            - Organized workshops
+
+            Does NOT show:
+            - Other
+          */
+
+          const shouldShow =
+            selectedCategory === "all"
+              ? category !== "other"
+              : category === selectedCategory;
+
+
+          if (shouldShow) {
+
+            publication.style.display = "";
+
+            visibleCount++;
+
+          }
+
+          else {
+
+            publication.style.display = "none";
+
+          }
+
+        }
+      );
+
+
+      // Hide an entire year if nothing
+      // in that year matches the filter
+
+      if (visibleCount > 0) {
+
+        section.style.display = "";
+
+      }
+
+      else {
+
+        section.style.display = "none";
+
+      }
+
+    });
+
+  }
+
+
   publicationFilters.forEach((filter) => {
 
-    filter.addEventListener("click", () => {
+    filter.addEventListener(
+      "click",
+      () => {
 
-      const selectedCategory =
-        filter.getAttribute("data-filter");
-
-
-      /* ------------------------------
-         UPDATE ACTIVE FILTER
-      ------------------------------ */
-
-      publicationFilters.forEach((button) => {
-
-        button.classList.remove("active");
-
-      });
-
-      filter.classList.add("active");
-
-
-      /* ------------------------------
-         FILTER EACH YEAR SECTION
-      ------------------------------ */
-
-      publicationSections.forEach((section) => {
-
-        const sectionPublications =
-          section.querySelectorAll(
-            ".full-publication"
+        const selectedCategory =
+          filter.getAttribute(
+            "data-filter"
           );
 
-        let visibleCount = 0;
 
+        // Update active filter
 
-        sectionPublications.forEach(
-          (publication) => {
+        publicationFilters.forEach(
+          (button) => {
 
-            const category =
-              publication.getAttribute(
-                "data-category"
-              );
-
-
-            const shouldShow =
-              selectedCategory === "all" ||
-              category === selectedCategory;
-
-
-            if (shouldShow) {
-
-              publication.style.display = "";
-              visibleCount++;
-
-            }
-
-            else {
-
-              publication.style.display = "none";
-
-            }
+            button.classList.remove(
+              "active"
+            );
 
           }
         );
 
 
-        /* Hide the entire year if
-           nothing inside it matches */
+        filter.classList.add(
+          "active"
+        );
 
-        if (visibleCount > 0) {
 
-          section.style.display = "";
+        // Apply selected filter
 
-        }
+        filterPublications(
+          selectedCategory
+        );
 
-        else {
-
-          section.style.display = "none";
-
-        }
-
-      });
-
-    });
+      }
+    );
 
   });
+
+
+  /*
+    Default publication view:
+    MAIN WORK
+
+    "Other" only appears when the
+    visitor explicitly selects Other.
+  */
+
+  filterPublications("all");
 
 }
