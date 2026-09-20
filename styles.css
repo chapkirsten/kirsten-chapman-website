@@ -1635,25 +1635,6 @@ main {
 }
 
 
-.pub-controls::before {
-  content: "FILTER WORK";
-
-  display: block;
-
-  margin-bottom: 15px;
-
-  color: var(--burgundy);
-
-  font-size: 8px;
-  font-weight: bold;
-
-  line-height: 1;
-
-  letter-spacing: .16em;
-
-  text-transform: uppercase;
-}
-
 
 .pub-legend {
   margin: 0;
@@ -3235,9 +3216,6 @@ main {
   }
 
 
-  .pub-controls::before {
-    margin-bottom: 14px;
-  }
 
 
   .pub-legend {
