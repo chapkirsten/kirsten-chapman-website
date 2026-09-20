@@ -301,3 +301,67 @@ if (bibtexCopy) {
   );
 
 }
+
+/* ==================================
+   NEWS ARCHIVE
+================================== */
+
+const recentNews = document.getElementById("recent-news");
+const olderNews = document.getElementById("older-news");
+const archive = document.getElementById("news-archive");
+const archiveToggle = document.getElementById("news-archive-toggle");
+
+if (recentNews && olderNews && archive && archiveToggle) {
+
+  const newsItems = recentNews.querySelectorAll(".news-item");
+
+  const today = new Date();
+
+  const oneYearAgo = new Date(today);
+  oneYearAgo.setFullYear(today.getFullYear() - 1);
+
+
+  newsItems.forEach((item) => {
+
+    const itemDate = new Date(item.dataset.date + "T00:00:00");
+
+    if (itemDate < oneYearAgo) {
+
+      olderNews.appendChild(item);
+
+    }
+
+  });
+
+
+  /* Hide archive completely if there are no old items */
+
+  if (olderNews.children.length === 0) {
+
+    archive.hidden = true;
+
+  }
+
+
+  /* Open / close archive */
+
+  archiveToggle.addEventListener("click", () => {
+
+    const isOpen =
+      archiveToggle.getAttribute("aria-expanded") === "true";
+
+    archiveToggle.setAttribute(
+      "aria-expanded",
+      String(!isOpen)
+    );
+
+    olderNews.hidden = isOpen;
+
+    archiveToggle.querySelector("span:first-child").textContent =
+      isOpen
+        ? "View older news"
+        : "Hide older news";
+
+  });
+
+}

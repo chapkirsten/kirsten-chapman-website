@@ -3045,3 +3045,567 @@ main {
   color: var(--burgundy);
 
 }
+
+/* ==================================
+   ABOUT → RESEARCH LINK
+================================== */
+
+.about-research-link {
+
+  display: inline-block;
+
+  margin-top: 55px;
+
+  color: var(--burgundy);
+
+  font-size: 10px;
+
+  letter-spacing: .08em;
+
+  text-transform: uppercase;
+
+  text-decoration: none;
+
+  border-bottom:
+    1px solid var(--burgundy);
+
+  padding-bottom: 4px;
+
+  transition:
+    opacity .2s ease;
+
+}
+
+
+.about-research-link:hover {
+
+  opacity: .6;
+
+}
+
+
+
+/* ==================================
+   NEWS / RECENTLY
+================================== */
+
+.news {
+
+  padding:
+    120px
+    clamp(35px, 7vw, 120px)
+    140px;
+
+  background:
+    var(--cream-dark);
+
+}
+
+
+
+/* ==================================
+   NEWS HEADING
+================================== */
+
+.news-heading {
+
+  margin:
+    65px
+    0
+    75px
+    8vw;
+
+  display: grid;
+
+  grid-template-columns:
+    minmax(0, 1fr)
+    240px;
+
+  gap: 60px;
+
+  align-items: end;
+
+}
+
+
+.news-heading h2 {
+
+  margin: 0;
+
+  font-family:
+    Arial,
+    Helvetica,
+    sans-serif;
+
+  font-size:
+    clamp(55px, 7vw, 100px);
+
+  line-height: .9;
+
+  letter-spacing: -.055em;
+
+}
+
+
+.news-heading h2 em {
+
+  color: var(--burgundy);
+
+  font-family: Georgia, serif;
+
+  font-weight: normal;
+
+}
+
+
+.news-heading p {
+
+  margin: 0;
+
+  color: var(--muted);
+
+  font-family: Georgia, serif;
+
+  font-size: 14px;
+
+  line-height: 1.6;
+
+}
+
+
+
+/* ==================================
+   NEWS LIST
+================================== */
+
+.news-list {
+
+  max-width: 1100px;
+
+  margin:
+    0
+    0
+    0
+    8vw;
+
+  border-top:
+    1px solid var(--line);
+
+}
+
+
+
+/* ==================================
+   INDIVIDUAL NEWS ITEM
+================================== */
+
+.news-item {
+
+  display: grid;
+
+  grid-template-columns:
+    80px
+    minmax(0, 1fr);
+
+  gap: 40px;
+
+  padding:
+    45px
+    0;
+
+  border-bottom:
+    1px solid var(--line);
+
+}
+
+
+
+/* ==================================
+   NEWS DATE
+================================== */
+
+.news-date {
+
+  padding-top: 4px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 3px;
+
+}
+
+
+.news-month {
+
+  color: var(--burgundy);
+
+  font-size: 10px;
+
+  font-weight: bold;
+
+  letter-spacing: .15em;
+
+}
+
+
+.news-year {
+
+  color: var(--muted);
+
+  font-family: Georgia, serif;
+
+  font-size: 12px;
+
+}
+
+
+
+/* ==================================
+   NEWS CONTENT
+================================== */
+
+.news-content {
+
+  max-width: 720px;
+
+}
+
+
+.news-category {
+
+  display: block;
+
+  margin-bottom: 14px;
+
+  color: var(--burgundy);
+
+  font-size: 8px;
+
+  font-weight: bold;
+
+  letter-spacing: .16em;
+
+}
+
+
+.news-content h3 {
+
+  max-width: 700px;
+
+  margin:
+    0
+    0
+    15px;
+
+  font-family: Georgia, serif;
+
+  font-size:
+    clamp(23px, 2.5vw, 34px);
+
+  font-weight: normal;
+
+  line-height: 1.15;
+
+  letter-spacing: -.02em;
+
+}
+
+
+.news-content p {
+
+  max-width: 650px;
+
+  margin:
+    0
+    0
+    18px;
+
+  color: var(--muted);
+
+  font-size: 13px;
+
+  line-height: 1.65;
+
+}
+
+
+.news-content a {
+
+  color: var(--burgundy);
+
+  font-size: 9px;
+
+  letter-spacing: .08em;
+
+  text-decoration: none;
+
+  text-transform: uppercase;
+
+}
+
+
+.news-content a:hover {
+
+  text-decoration: underline;
+
+}
+
+
+
+/* ==================================
+   FEATURED NEWS WITH IMAGE
+================================== */
+
+.news-item.news-featured {
+
+  grid-template-columns:
+    80px
+    minmax(180px, 300px)
+    minmax(0, 1fr);
+
+  align-items: center;
+
+  padding:
+    55px
+    0;
+
+}
+
+
+.news-image {
+
+  position: relative;
+
+  overflow: hidden;
+
+}
+
+
+.news-image::after {
+
+  content: "";
+
+  position: absolute;
+
+  inset: 8px -8px -8px 8px;
+
+  border:
+    1px solid var(--pink);
+
+  z-index: 0;
+
+}
+
+
+.news-image img {
+
+  position: relative;
+
+  display: block;
+
+  width: 100%;
+
+  aspect-ratio: 4 / 3;
+
+  object-fit: cover;
+
+  z-index: 1;
+
+  transition:
+    transform .5s ease;
+
+}
+
+
+.news-item:hover
+.news-image img {
+
+  transform:
+    scale(1.02);
+
+}
+
+
+
+/* ==================================
+   MOBILE NEWS
+================================== */
+
+@media (max-width: 800px) {
+
+  .news {
+
+    padding:
+      85px
+      30px
+      100px;
+
+  }
+
+
+  .news-heading {
+
+    margin:
+      50px
+      0
+      55px;
+
+    grid-template-columns:
+      1fr;
+
+    gap: 25px;
+
+  }
+
+
+  .news-heading p {
+
+    max-width: 400px;
+
+  }
+
+
+  .news-list {
+
+    margin: 0;
+
+  }
+
+
+  .news-item,
+  .news-item.news-featured {
+
+    grid-template-columns:
+      60px
+      1fr;
+
+    gap: 20px;
+
+  }
+
+
+  .news-item.news-featured
+  .news-image {
+
+    grid-column:
+      2;
+
+  }
+
+
+  .news-item.news-featured
+  .news-content {
+
+    grid-column:
+      2;
+
+  }
+
+}
+
+/* ==================================
+   NEWS ARCHIVE
+================================== */
+
+.news-archive {
+
+  max-width: 1100px;
+
+  margin:
+    0
+    0
+    0
+    8vw;
+
+}
+
+
+.news-archive-toggle {
+
+  width: 100%;
+
+  padding:
+    25px
+    0;
+
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: center;
+
+  background: none;
+
+  border: 0;
+
+  border-bottom:
+    1px solid var(--line);
+
+  color: var(--burgundy);
+
+  font-family:
+    Arial,
+    Helvetica,
+    sans-serif;
+
+  font-size: 9px;
+
+  font-weight: bold;
+
+  letter-spacing: .12em;
+
+  text-transform: uppercase;
+
+  cursor: pointer;
+
+}
+
+
+.news-archive-toggle:hover {
+
+  opacity: .6;
+
+}
+
+
+.news-archive-arrow {
+
+  font-family: Georgia, serif;
+
+  font-size: 16px;
+
+  transition:
+    transform .25s ease;
+
+}
+
+
+.news-archive-toggle[aria-expanded="true"]
+.news-archive-arrow {
+
+  transform:
+    rotate(180deg);
+
+}
+
+
+.news-list-older {
+
+  margin-left: 0;
+
+  border-top: 0;
+
+}
+
+
+@media (max-width: 800px) {
+
+  .news-archive {
+
+    margin: 0;
+
+  }
+
+}
