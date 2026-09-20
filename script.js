@@ -306,26 +306,64 @@ if (bibtexCopy) {
    NEWS ARCHIVE
 ================================== */
 
-const recentNews = document.getElementById("recent-news");
-const olderNews = document.getElementById("older-news");
-const archive = document.getElementById("news-archive");
-const archiveToggle = document.getElementById("news-archive-toggle");
+const recentNews =
+  document.getElementById("recent-news");
 
-if (recentNews && olderNews && archive && archiveToggle) {
+const olderNews =
+  document.getElementById("older-news");
 
-  const newsItems = recentNews.querySelectorAll(".news-item");
+const archive =
+  document.getElementById("news-archive");
 
-  const today = new Date();
-
-  const oneYearAgo = new Date(today);
-  oneYearAgo.setFullYear(today.getFullYear() - 1);
+const archiveToggle =
+  document.getElementById("news-archive-toggle");
 
 
-  newsItems.forEach((item) => {
+if (
+  recentNews &&
+  olderNews &&
+  archive &&
+  archiveToggle
+) {
 
-    const itemDate = new Date(item.dataset.date + "T00:00:00");
+  const MAX_RECENT_NEWS = 5;
 
-    if (itemDate < oneYearAgo) {
+  const newsItems =
+    Array.from(
+      recentNews.querySelectorAll(".news-item")
+    );
+
+
+  /* ==================================
+     SORT NEWS BY DATE
+  ================================== */
+
+  newsItems.sort((a, b) => {
+
+    const dateA =
+      new Date(a.dataset.date);
+
+    const dateB =
+      new Date(b.dataset.date);
+
+    return dateB - dateA;
+
+  });
+
+
+  /* ==================================
+     KEEP 5 MOST RECENT
+  ================================== */
+
+  newsItems.forEach((item, index) => {
+
+    if (index < MAX_RECENT_NEWS) {
+
+      recentNews.appendChild(item);
+
+    }
+
+    else {
 
       olderNews.appendChild(item);
 
@@ -334,7 +372,9 @@ if (recentNews && olderNews && archive && archiveToggle) {
   });
 
 
-  /* Hide archive completely if there are no old items */
+  /* ==================================
+     SHOW / HIDE ARCHIVE BUTTON
+  ================================== */
 
   if (olderNews.children.length === 0) {
 
@@ -342,26 +382,49 @@ if (recentNews && olderNews && archive && archiveToggle) {
 
   }
 
+  else {
 
-  /* Open / close archive */
+    archive.hidden = false;
 
-  archiveToggle.addEventListener("click", () => {
+  }
 
-    const isOpen =
-      archiveToggle.getAttribute("aria-expanded") === "true";
 
-    archiveToggle.setAttribute(
-      "aria-expanded",
-      String(!isOpen)
-    );
+  /* ==================================
+     OPEN / CLOSE ARCHIVE
+  ================================== */
 
-    olderNews.hidden = isOpen;
+  archiveToggle.addEventListener(
+    "click",
+    () => {
 
-    archiveToggle.querySelector("span:first-child").textContent =
-      isOpen
-        ? "View older news"
-        : "Hide older news";
+      const isOpen =
+        archiveToggle.getAttribute(
+          "aria-expanded"
+        ) === "true";
 
-  });
+
+      archiveToggle.setAttribute(
+        "aria-expanded",
+        String(!isOpen)
+      );
+
+
+      olderNews.hidden =
+        isOpen;
+
+
+      const label =
+        archiveToggle.querySelector(
+          "span:first-child"
+        );
+
+
+      label.textContent =
+        isOpen
+          ? "View older news"
+          : "Hide older news";
+
+    }
+  );
 
 }
