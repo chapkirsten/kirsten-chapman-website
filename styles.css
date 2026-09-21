@@ -4279,3 +4279,23 @@ button:focus-visible {
   color:
     var(--oxblood) !important;
 }
+
+/* ==================================
+   RESEARCH PAGE HERO
+================================== */
+
+.research-page-hero .subpage-meta {
+  color: var(--burgundy);
+}
+
+.research-page-hero .subpage-title .hello {
+  color: var(--burgundy);
+}
+
+.research-page-hero .subpage-title h1 em {
+  color: var(--burgundy);
+}
+
+.research-page-hero .mini-heading {
+  color: var(--burgundy);
+}
