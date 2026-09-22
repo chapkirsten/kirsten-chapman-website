@@ -4456,8 +4456,6 @@ html[data-theme="dark"] .publication-search-box input { color-scheme: dark; }
    POLISH: FLOATING TOP, THEME SWITCH,
    PUBLICATION CONTROLS + READABILITY
 ================================== */
-
-/* A quiet, persistent return-to-top control. */
 .back-to-top-wrap {
   position: fixed;
   right: 22px;
@@ -4470,7 +4468,7 @@ html[data-theme="dark"] .publication-search-box input { color-scheme: dark; }
 }
 
 .back-to-top {
-  pointer-events: auto;
+  pointer-events: none;
   display: inline-flex;
   align-items: center;
   gap: 6px;
@@ -4483,17 +4481,34 @@ html[data-theme="dark"] .publication-search-box input { color-scheme: dark; }
   color: var(--forest);
   font-size: 10px;
   box-shadow: 0 2px 10px rgba(0,0,0,.05);
-  opacity: .78;
-  transition: opacity .2s ease, transform .2s ease, border-color .2s ease;
+
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(8px);
+
+  transition:
+    opacity .2s ease,
+    transform .2s ease,
+    visibility .2s ease,
+    border-color .2s ease;
 }
 
-.back-to-top:hover {
+.back-to-top.visible {
+  pointer-events: auto;
+  opacity: .78;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.back-to-top.visible:hover {
   opacity: 1;
   transform: translateY(-2px);
   border-color: var(--forest);
 }
 
-.back-to-top span { font-size: 15px; }
+.back-to-top span {
+  font-size: 15px;
+}
 
 /* Theme control now lives quietly in the sidebar. */
 .theme-toggle {
