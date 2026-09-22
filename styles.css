@@ -6764,3 +6764,82 @@ body.elsewhere-page {
   }
 
 }
+
+/* ==================================
+   SECRET ELSEWHERE ENTRANCE
+   Small circle beside the homepage footer signoff.
+================================== */
+
+.contact-signoff {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.footer-secret-dot {
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  flex: 0 0 7px;
+  border-radius: 50%;
+  background: currentColor;
+  opacity: .45;
+  text-decoration: none;
+}
+
+.footer-secret-dot:hover,
+.footer-secret-dot:focus-visible {
+  opacity: .8;
+}
+
+/* ==================================
+   ELSEWHERE MOBILE OVERFLOW FIX
+================================== */
+
+@media (max-width: 700px) {
+  .cover-caption {
+    width: min(78%, 290px);
+    max-width: calc(100vw - 30px);
+    margin-left: 0;
+    overflow-wrap: break-word;
+  }
+
+  .volume-intro-layout,
+  .volume-intro h2,
+  .volume-intro p {
+    min-width: 0;
+    max-width: 100%;
+  }
+
+  .volume-intro h2 {
+    font-size: clamp(48px, 16vw, 72px);
+    line-height: .82;
+    letter-spacing: -.055em;
+    overflow-wrap: normal;
+  }
+
+  .volume-intro p {
+    width: 82%;
+  }
+}
+
+@media (max-width: 380px) {
+  .volume-intro h2 {
+    font-size: clamp(44px, 15vw, 58px);
+  }
+}
+
+/* ==================================
+   ELSEWHERE NARROW-VIEWPORT CAPTION FIX
+   Keep the intro copy inside the cover when a desktop browser is narrowed.
+================================== */
+
+@media (max-width: 900px) {
+  .cover-caption {
+    width: min(440px, calc(100% - 30px));
+    max-width: calc(100% - 30px);
+    margin: 50px auto 0;
+    transform: none;
+    overflow-wrap: anywhere;
+  }
+}
