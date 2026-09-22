@@ -6150,10 +6150,24 @@ body.elsewhere-page * {
 
 
   .afterhours-current h2 {
+    /* On narrow viewports, wrap only BETWEEN words. Never split words
+       such as “CURRENTLY”, “SEPTEMBER”, or “PERMANENT”. */
+    display: block;
+    max-width: 100%;
+
     font-size:
-      clamp(50px, 15vw, 70px);
+      clamp(38px, 12vw, 72px);
 
     line-height: .82;
+    white-space: normal;
+    word-break: keep-all;
+    overflow-wrap: normal;
+  }
+
+  /* Remove the desktop-forced line breaks on narrow screens so the
+     browser can choose the safest wrap points between whole words. */
+  .afterhours-current h2 br {
+    display: none;
   }
 
 
@@ -6315,7 +6329,7 @@ body.elsewhere-page * {
 
 
   .afterhours-current h2 {
-    font-size: 47px;
+    font-size: clamp(27px, 9.2vw, 35px);
   }
 
 
