@@ -4504,7 +4504,7 @@ html[data-theme="dark"] .publication-search-box input { color-scheme: dark; }
   grid-template-columns: auto auto auto;
   align-items: center;
   gap: 6px;
-  margin: 0 0 18px;
+  margin: 16px 0 18px;
   padding: 0;
   border: 0;
   border-radius: 0;
@@ -4654,4 +4654,99 @@ html[data-theme="dark"] .publication-search-box input {
 }
 html[data-theme="dark"] .publication-search-box input::placeholder {
   color: #9fa59f;
+}
+
+/* ==================================
+   DARK MODE SURFACE CONSISTENCY
+   Light accent panels that intentionally do not darken keep
+   their light-mode text palette too, avoiding low contrast.
+================================== */
+html[data-theme="dark"] .personal {
+  background: #c8bdab;
+  color: #171915;
+}
+html[data-theme="dark"] .personal-number,
+html[data-theme="dark"] .personal h2 em {
+  color: #6f3038;
+}
+html[data-theme="dark"] .personal-copy,
+html[data-theme="dark"] .personal-copy p {
+  color: #171915;
+}
+html[data-theme="dark"] .personal-copy a {
+  color: #17382b;
+  border-color: #17382b;
+}
+
+/* The sage contact panel also stays a light accent surface in dark mode,
+   so keep its complete light-mode palette rather than swapping in pale text. */
+html[data-theme="dark"] .contact .contact-bottom,
+html[data-theme="dark"] .contact .contact-bottom * {
+  color: #6f3038 !important;
+}
+
+/* ==================================
+   MOBILE THEME CONTROL
+   Reuse the sidebar switch in the compact mobile header without
+   exposing the desktop social/footer content.
+================================== */
+@media (max-width: 850px) {
+  .sidebar-bottom {
+    display: block;
+    margin-left: auto;
+  }
+
+  .sidebar-bottom .social-links,
+  .sidebar-bottom > p {
+    display: none;
+  }
+
+  .sidebar-bottom .theme-toggle {
+    display: grid;
+    margin: 0;
+    font-size: 8px;
+    gap: 5px;
+    color: rgba(255,250,240,.72);
+  }
+
+  .sidebar-bottom .theme-switch {
+    width: 26px;
+    height: 14px;
+  }
+
+  html[data-theme="dark"] .sidebar-bottom .theme-switch > span {
+    transform: translateX(12px);
+  }
+}
+
+@media (max-width: 430px) {
+  .sidebar-bottom .theme-toggle-label,
+  .sidebar-bottom .theme-toggle-alt {
+    display: none;
+  }
+
+  .sidebar-bottom .theme-toggle {
+    gap: 0;
+  }
+}
+
+/* Keep the primary "Get in touch" card identical to its light-mode color. */
+html[data-theme="dark"] .contact .contact-card-primary {
+  background: #dfbcc2 !important;
+  border-color: #dfbcc2 !important;
+  color: #211a19 !important;
+}
+
+html[data-theme="dark"] .contact .contact-card-primary * {
+  color: #211a19 !important;
+}
+
+html[data-theme="dark"] .contact .contact-card-primary:hover {
+  background: #f3eee5 !important;
+  border-color: #f3eee5 !important;
+  color: #762d3c !important;
+}
+
+html[data-theme="dark"] .contact .contact-card-primary:hover * {
+  color: #762d3c !important;
 }
