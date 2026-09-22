@@ -4771,3 +4771,69 @@ html[data-theme="dark"] .contact .contact-card-primary:hover {
 html[data-theme="dark"] .contact .contact-card-primary:hover * {
   color: #f7f3ea !important;
 }
+
+
+/* ==================================
+   MOBILE THEME TOGGLE
+   Compact icon-only button
+================================== */
+
+@media (max-width: 768px) {
+
+  /* Keep the mobile theme control compact */
+  .mobile-theme-toggle {
+    width: 36px;
+    height: 36px;
+
+    min-width: 36px;
+    flex: 0 0 36px;
+
+    padding: 0;
+    margin-left: auto;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 1px solid var(--line);
+    border-radius: 8px;
+
+    background: transparent;
+    color: var(--ink);
+
+    cursor: pointer;
+  }
+
+
+  /* Hide the Light / Dark words on mobile */
+  .mobile-theme-toggle .theme-label,
+  .mobile-theme-toggle .theme-switch {
+    display: none;
+  }
+
+
+  /* Moon icon = currently light mode */
+  .mobile-theme-toggle::after {
+    content: "☾";
+
+    font-size: 18px;
+    line-height: 1;
+    font-weight: 400;
+  }
+
+
+  /* Sun icon = currently dark mode */
+  html[data-theme="dark"]
+  .mobile-theme-toggle::after {
+    content: "☀";
+  }
+
+
+  /* Make sure it remains readable in dark mode */
+  html[data-theme="dark"]
+  .mobile-theme-toggle {
+    color: var(--ink);
+    border-color: var(--line);
+  }
+
+}

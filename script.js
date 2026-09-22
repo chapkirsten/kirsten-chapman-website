@@ -51,6 +51,7 @@ revealElements.forEach((element) => {
 // --------------------------------
 // The active page is set in each HTML file. Keep it persistent while scrolling.
 
+
 // --------------------------------
 // BIBTEX POPUP
 // --------------------------------
@@ -534,33 +535,85 @@ if (
 
 }
 
+
 // --------------------------------
 // LIGHT / DARK MODE
 // --------------------------------
 
-const themeToggle = document.querySelector(".theme-toggle");
-const themeLabel = document.querySelector(".theme-toggle-label");
+const themeToggle =
+  document.querySelector(".theme-toggle");
+
 
 function applyTheme(theme) {
-  document.documentElement.setAttribute("data-theme", theme);
-  if (themeLabel) themeLabel.textContent = theme === "dark" ? "Light" : "Dark";
+
+  document.documentElement.setAttribute(
+    "data-theme",
+    theme
+  );
+
+
   if (themeToggle) {
-    const next = theme === "dark" ? "light" : "dark";
-    themeToggle.setAttribute("aria-label", `Switch to ${next} mode`);
-    themeToggle.setAttribute("title", `Switch to ${next} mode`);
+
+    const next =
+      theme === "dark"
+        ? "light"
+        : "dark";
+
+
+    themeToggle.setAttribute(
+      "aria-label",
+      `Switch to ${next} mode`
+    );
+
+
+    themeToggle.setAttribute(
+      "title",
+      `Switch to ${next} mode`
+    );
+
   }
+
 }
 
-// Light is intentionally the default, unless the visitor has made a choice before.
-applyTheme(localStorage.getItem("kc-theme") || "light");
+
+// Light is intentionally the default,
+// unless the visitor has made a choice before.
+
+applyTheme(
+  localStorage.getItem("kc-theme") ||
+  "light"
+);
+
 
 if (themeToggle) {
-  themeToggle.addEventListener("click", () => {
-    const current = document.documentElement.getAttribute("data-theme") || "light";
-    const next = current === "dark" ? "light" : "dark";
-    localStorage.setItem("kc-theme", next);
-    applyTheme(next);
-  });
+
+  themeToggle.addEventListener(
+    "click",
+    () => {
+
+      const current =
+        document.documentElement.getAttribute(
+          "data-theme"
+        ) || "light";
+
+
+      const next =
+        current === "dark"
+          ? "light"
+          : "dark";
+
+
+      localStorage.setItem(
+        "kc-theme",
+        next
+      );
+
+
+      applyTheme(next);
+
+    }
+  );
+
 }
 
 
@@ -568,53 +621,174 @@ if (themeToggle) {
 // PUBLICATION SEARCH
 // --------------------------------
 
-const publicationSearch = document.getElementById("publication-search");
-const publicationSearchClear = document.getElementById("publication-search-clear");
-const publicationSearchStatus = document.getElementById("publication-search-status");
+const publicationSearch =
+  document.getElementById(
+    "publication-search"
+  );
 
-if (publicationSearch && publications.length > 0) {
-  let currentPublicationFilter = "all";
+const publicationSearchClear =
+  document.getElementById(
+    "publication-search-clear"
+  );
 
-  function publicationMatchesCategory(publication) {
-    const category = publication.getAttribute("data-category");
-    return currentPublicationFilter === "all" ? category !== "other" : category === currentPublicationFilter;
+const publicationSearchStatus =
+  document.getElementById(
+    "publication-search-status"
+  );
+
+
+if (
+  publicationSearch &&
+  publications.length > 0
+) {
+
+  let currentPublicationFilter =
+    "all";
+
+
+  function publicationMatchesCategory(
+    publication
+  ) {
+
+    const category =
+      publication.getAttribute(
+        "data-category"
+      );
+
+
+    return currentPublicationFilter === "all"
+      ? category !== "other"
+      : category === currentPublicationFilter;
+
   }
+
 
   function applyPublicationSearchAndFilter() {
-    const query = publicationSearch.value.trim().toLowerCase();
+
+    const query =
+      publicationSearch.value
+        .trim()
+        .toLowerCase();
+
+
     let totalVisible = 0;
 
-    publicationSections.forEach((section) => {
-      let visibleInSection = 0;
-      section.querySelectorAll(".full-publication").forEach((publication) => {
-        const matchesText = !query || publication.textContent.toLowerCase().includes(query);
-        const show = publicationMatchesCategory(publication) && matchesText;
-        publication.style.display = show ? "" : "none";
-        if (show) { visibleInSection++; totalVisible++; }
-      });
-      section.style.display = visibleInSection ? "" : "none";
-    });
 
-    publicationSearchClear.hidden = !query;
+    publicationSections.forEach(
+      (section) => {
+
+        let visibleInSection = 0;
+
+
+        section
+          .querySelectorAll(
+            ".full-publication"
+          )
+          .forEach(
+            (publication) => {
+
+              const matchesText =
+                !query ||
+                publication.textContent
+                  .toLowerCase()
+                  .includes(query);
+
+
+              const show =
+                publicationMatchesCategory(
+                  publication
+                ) &&
+                matchesText;
+
+
+              publication.style.display =
+                show ? "" : "none";
+
+
+              if (show) {
+
+                visibleInSection++;
+
+                totalVisible++;
+
+              }
+
+            }
+          );
+
+
+        section.style.display =
+          visibleInSection
+            ? ""
+            : "none";
+
+      }
+    );
+
+
+    publicationSearchClear.hidden =
+      !query;
+
+
     if (publicationSearchStatus) {
-      publicationSearchStatus.textContent = query
-        ? `${totalVisible} ${totalVisible === 1 ? "result" : "results"}`
-        : "";
+
+      publicationSearchStatus.textContent =
+        query
+          ? `${totalVisible} ${
+              totalVisible === 1
+                ? "result"
+                : "results"
+            }`
+          : "";
+
     }
+
   }
 
-  publicationSearch.addEventListener("input", applyPublicationSearchAndFilter);
-  publicationSearchClear?.addEventListener("click", () => {
-    publicationSearch.value = "";
-    publicationSearch.focus();
-    applyPublicationSearchAndFilter();
-  });
 
-  // Run after the existing category-filter click handler, then combine both constraints.
-  publicationFilters.forEach((filter) => {
-    filter.addEventListener("click", () => {
-      currentPublicationFilter = filter.getAttribute("data-filter") || "all";
+  publicationSearch.addEventListener(
+    "input",
+    applyPublicationSearchAndFilter
+  );
+
+
+  publicationSearchClear?.addEventListener(
+    "click",
+    () => {
+
+      publicationSearch.value =
+        "";
+
+      publicationSearch.focus();
+
       applyPublicationSearchAndFilter();
-    });
-  });
+
+    }
+  );
+
+
+  // Run after the existing category-filter
+  // click handler, then combine both constraints.
+
+  publicationFilters.forEach(
+    (filter) => {
+
+      filter.addEventListener(
+        "click",
+        () => {
+
+          currentPublicationFilter =
+            filter.getAttribute(
+              "data-filter"
+            ) || "all";
+
+
+          applyPublicationSearchAndFilter();
+
+        }
+      );
+
+    }
+  );
+
 }
