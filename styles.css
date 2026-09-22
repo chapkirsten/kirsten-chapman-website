@@ -4750,3 +4750,24 @@ html[data-theme="dark"] .contact .contact-card-primary:hover {
 html[data-theme="dark"] .contact .contact-card-primary:hover * {
   color: #762d3c !important;
 }
+
+/* Final dark-mode contact-card parity: match the light-mode contact treatment exactly. */
+html[data-theme="dark"] .contact .contact-card-primary {
+  background: #aeb9aa !important;
+  border-color: #66786a !important;
+  color: #17382b !important;
+}
+
+html[data-theme="dark"] .contact .contact-card-primary * {
+  color: #17382b !important;
+}
+
+html[data-theme="dark"] .contact .contact-card-primary:hover {
+  background: #17382b !important;
+  border-color: #17382b !important;
+  color: #f7f3ea !important;
+}
+
+html[data-theme="dark"] .contact .contact-card-primary:hover * {
+  color: #f7f3ea !important;
+}
