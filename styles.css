@@ -6843,3 +6843,20 @@ body.elsewhere-page {
     overflow-wrap: anywhere;
   }
 }
+
+
+/* ==================================
+   SECRET ELSEWHERE DOT — RESPONSIVE
+================================== */
+
+/* Sidebar/desktop version: don't show the bottom dot */
+.footer-secret-dot {
+  display: none;
+}
+
+/* When the sidebar disappears, show the bottom dot */
+@media (max-width: 850px) {
+  .footer-secret-dot {
+    display: inline-block;
+  }
+}
