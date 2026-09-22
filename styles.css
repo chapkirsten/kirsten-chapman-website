@@ -4774,26 +4774,86 @@ html[data-theme="dark"] .contact .contact-card-primary:hover * {
 
 
 /* ==================================
-   MOBILE THEME TOGGLE
-   Compact icon-only button
+   FINAL MOBILE HEADER + THEME BUTTON
 ================================== */
 
-@media (max-width: 768px) {
+@media (max-width: 850px) {
 
-  /* Keep the mobile theme control compact */
-  .mobile-theme-toggle {
+  /* Give the header a clean three-part layout:
+     KC | navigation | theme button */
+  .sidebar {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    gap: 16px;
+
+    padding: 14px 18px;
+  }
+
+
+  /* Remove desktop-only status */
+  .sidebar-status {
+    display: none;
+  }
+
+
+  /* Navigation gets its own centered area */
+  .sidebar nav {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+
+    gap: clamp(10px, 3vw, 22px);
+
+    min-width: 0;
+    margin: 0;
+  }
+
+
+  .sidebar nav a {
+    display: block;
+
+    padding: 0;
+
+    font-size: 10px;
+    white-space: nowrap;
+  }
+
+
+  .sidebar nav a span {
+    display: none;
+  }
+
+
+  /* Reuse sidebar-bottom only to hold theme button */
+  .sidebar-bottom {
+    display: block;
+
+    margin: 0;
+    padding: 0;
+  }
+
+
+  .sidebar-bottom .social-links,
+  .sidebar-bottom > p {
+    display: none;
+  }
+
+
+  /* Compact icon-only theme button */
+  .sidebar-bottom .theme-toggle {
     width: 36px;
     height: 36px;
 
     min-width: 36px;
-    flex: 0 0 36px;
-
-    padding: 0;
-    margin-left: auto;
 
     display: flex;
     align-items: center;
     justify-content: center;
+
+    margin: 0;
+    padding: 0;
 
     border: 1px solid var(--line);
     border-radius: 8px;
@@ -4805,35 +4865,56 @@ html[data-theme="dark"] .contact .contact-card-primary:hover * {
   }
 
 
-  /* Hide the Light / Dark words on mobile */
-  .mobile-theme-toggle .theme-label,
-  .mobile-theme-toggle .theme-switch {
+  /* Hide desktop Light / switch / Dark UI */
+  .sidebar-bottom .theme-toggle-label,
+  .sidebar-bottom .theme-toggle-alt,
+  .sidebar-bottom .theme-switch {
     display: none;
   }
 
 
-  /* Moon icon = currently light mode */
-  .mobile-theme-toggle::after {
+  /* Moon while site is in light mode */
+  .sidebar-bottom .theme-toggle::after {
     content: "☾";
 
-    font-size: 18px;
+    font-size: 19px;
     line-height: 1;
-    font-weight: 400;
   }
 
 
-  /* Sun icon = currently dark mode */
+  /* Sun while site is in dark mode */
   html[data-theme="dark"]
-  .mobile-theme-toggle::after {
+  .sidebar-bottom .theme-toggle::after {
     content: "☀";
   }
 
+}
 
-  /* Make sure it remains readable in dark mode */
-  html[data-theme="dark"]
-  .mobile-theme-toggle {
-    color: var(--ink);
-    border-color: var(--line);
+
+/* Extra breathing room on small phones */
+@media (max-width: 500px) {
+
+  .sidebar {
+    gap: 10px;
+    padding-left: 14px;
+    padding-right: 14px;
+  }
+
+
+  .sidebar nav {
+    gap: clamp(7px, 2.2vw, 12px);
+  }
+
+
+  .sidebar nav a {
+    font-size: 9px;
+  }
+
+
+  .sidebar-bottom .theme-toggle {
+    width: 34px;
+    height: 34px;
+    min-width: 34px;
   }
 
 }
