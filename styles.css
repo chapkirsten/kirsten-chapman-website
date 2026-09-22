@@ -6449,3 +6449,318 @@ body.elsewhere-page {
   color: #fff3df;
 }
 
+/* ==================================
+   ELSEWHERE — VOLUME ARCHIVE
+================================== */
+
+.volume-archive {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 30px;
+
+  padding:
+    24px
+    clamp(18px, 4vw, 55px);
+
+  border-bottom: 2px solid #35261f;
+
+  background: #e8d7bb;
+  color: #211915;
+
+  font-family:
+    "Space Mono",
+    monospace;
+
+  text-transform: uppercase;
+}
+
+
+.volume-archive-label {
+  justify-self: start;
+
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: .12em;
+}
+
+
+.volume-archive-links {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+}
+
+
+.volume-link {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+
+  padding: 7px 13px;
+
+  color: #211915;
+
+  text-decoration: none;
+
+  border: 1px solid transparent;
+
+  transition:
+    color .2s ease,
+    border-color .2s ease,
+    background .2s ease;
+}
+
+
+.volume-link:hover {
+  color: #96372f;
+  border-color: #96372f;
+}
+
+
+.volume-link.active {
+  background: #96372f;
+  color: #fff7e9;
+  border-color: #96372f;
+}
+
+
+.volume-number {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: .08em;
+}
+
+
+.volume-date {
+  font-size: 7px;
+  letter-spacing: .1em;
+  opacity: .8;
+}
+
+
+.volume-arrow {
+  font-size: 15px;
+}
+
+
+.volume-arrow-disabled {
+  opacity: .25;
+}
+
+
+.volume-archive-current {
+  justify-self: end;
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 3px;
+
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: .08em;
+}
+
+
+.volume-archive-current span {
+  color: #7d6e61;
+
+  font-size: 6px;
+  letter-spacing: .12em;
+}
+
+
+/* ==================================
+   ELSEWHERE — VOLUME INTRO
+================================== */
+
+.volume-intro {
+  width: 100%;
+
+  padding:
+    clamp(65px, 8vw, 110px)
+    clamp(20px, 6vw, 90px)
+    clamp(70px, 8vw, 115px);
+
+  background: #f3e9d8;
+  color: #211915;
+
+  border-bottom: 2px solid #35261f;
+}
+
+
+.volume-intro-kicker {
+  margin-bottom:
+    clamp(35px, 5vw, 65px);
+
+  color: #96372f;
+
+  font-family:
+    "Space Mono",
+    monospace;
+
+  font-size: 8px;
+  font-weight: 700;
+
+  letter-spacing: .13em;
+
+  text-transform: uppercase;
+}
+
+
+.volume-intro-layout {
+  display: grid;
+
+  grid-template-columns:
+    minmax(0, 1.5fr)
+    minmax(220px, .5fr);
+
+  align-items: end;
+
+  gap:
+    clamp(35px, 7vw, 110px);
+}
+
+
+.volume-intro h2 {
+  margin: 0;
+
+  font-family:
+    "Archivo Black",
+    Arial,
+    sans-serif;
+
+  font-size:
+    clamp(65px, 11vw, 165px);
+
+  line-height: .76;
+
+  letter-spacing: -.065em;
+
+  text-transform: uppercase;
+}
+
+
+.volume-intro h2 span {
+  display: block;
+
+  color: #96372f;
+}
+
+
+.volume-intro p {
+  max-width: 320px;
+
+  margin: 0 0 5px;
+
+  color: #57473c;
+
+  font-family:
+    "Newsreader",
+    Georgia,
+    serif;
+
+  font-size:
+    clamp(15px, 1.4vw, 19px);
+
+  font-style: italic;
+
+  line-height: 1.55;
+}
+
+
+/* ==================================
+   ELSEWHERE — VOLUME MOBILE
+================================== */
+
+@media (max-width: 700px) {
+
+  .volume-archive {
+    grid-template-columns: 1fr auto;
+
+    gap: 15px;
+
+    padding:
+      18px
+      15px;
+  }
+
+
+  .volume-archive-label {
+    font-size: 7px;
+  }
+
+
+  .volume-archive-links {
+    justify-self: end;
+
+    gap: 9px;
+  }
+
+
+  .volume-link {
+    padding: 6px 9px;
+  }
+
+
+  .volume-number {
+    font-size: 8px;
+  }
+
+
+  .volume-date {
+    font-size: 6px;
+  }
+
+
+  .volume-arrow {
+    font-size: 12px;
+  }
+
+
+  .volume-archive-current {
+    display: none;
+  }
+
+
+  .volume-intro {
+    padding:
+      65px
+      15px
+      75px;
+  }
+
+
+  .volume-intro-kicker {
+    margin-bottom: 35px;
+
+    font-size: 7px;
+  }
+
+
+  .volume-intro-layout {
+    grid-template-columns: 1fr;
+
+    gap: 35px;
+  }
+
+
+  .volume-intro h2 {
+    font-size:
+      clamp(62px, 19vw, 88px);
+  }
+
+
+  .volume-intro p {
+    width: 75%;
+
+    margin-left: auto;
+
+    font-size: 13px;
+  }
+
+}
