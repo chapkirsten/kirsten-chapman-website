@@ -792,3 +792,42 @@ if (
   );
 
 }
+
+// --------------------------------
+// BACK TO TOP
+// --------------------------------
+
+const backToTop =
+  document.querySelector(".back-to-top");
+
+
+if (backToTop) {
+
+  function updateBackToTop() {
+
+    if (window.scrollY > 20) {
+
+      backToTop.classList.add("visible");
+
+    }
+
+    else {
+
+      backToTop.classList.remove("visible");
+
+    }
+
+  }
+
+
+  window.addEventListener(
+    "scroll",
+    updateBackToTop,
+    { passive: true }
+  );
+
+
+  // Check position when page first loads
+  updateBackToTop();
+
+}
