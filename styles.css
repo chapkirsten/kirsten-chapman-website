@@ -141,15 +141,6 @@ a {
     pulse 2.2s ease-in-out infinite;
 }
 
-.status-dot {
-  cursor: pointer;
-  text-decoration: none;
-}
-
-.status-dot:hover {
-  transform: scale(1.35);
-}
-
 
 @keyframes pulse {
 
@@ -4825,9 +4816,20 @@ html[data-theme="dark"] .contact .contact-card-primary:hover * {
 
     padding: 0;
 
-    font-size: 11px;
+    font-size: 10px;
     white-space: nowrap;
-  
+
+    /* Mobile only: keep nav labels visually stable. */
+    font-style: normal;
+    transform: none;
+  }
+
+
+  /* On touch screens, the active/hover state should change color only.
+     Do not italicize or shift the current page label. */
+  .sidebar nav a:hover,
+  .sidebar nav a.active,
+  .sidebar nav a.active:hover {
     font-style: normal;
     transform: none;
   }
@@ -4931,593 +4933,1504 @@ html[data-theme="dark"] .contact .contact-card-primary:hover * {
 
 }
 
-
 /* ==================================
-   ELSEWHERE
-   secret little corner of the internet
+   ELSEWHERE / AFTER HOURS
+   Warm, scruffy, after-midnight edition
 ================================== */
 
+
+/* ----------------------------------
+   PALETTE
+---------------------------------- */
 
 body.elsewhere-page {
-  background: var(--cream);
-  color: var(--ink);
+  --ah-paper: #eee5d5;
+  --ah-paper-dark: #ddd0ba;
+  --ah-ink: #211b17;
+  --ah-soft-ink: #62584f;
+  --ah-red: #8b302d;
+  --ah-red-dark: #63211f;
+  --ah-tobacco: #8b6849;
+  --ah-black: #171411;
+  --ah-line: #3c342d;
+
+  margin: 0;
+
+  width: 100%;
+  max-width: 100%;
+
+  overflow-x: hidden;
+
+  background: var(--ah-paper);
+  color: var(--ah-ink);
+
+  font-family:
+    "Space Mono",
+    "Courier New",
+    monospace;
 }
 
 
-/* ==================================
-   PAGE
-================================== */
+body.elsewhere-page * {
+  box-sizing: border-box;
+  min-width: 0;
+}
 
-.elsewhere {
+
+.afterhours {
+  /* Override the global main { margin-left: var(--sidebar-width); } rule.
+     Elsewhere has no sidebar, so that desktop margin was making this
+     100%-wide page 220px wider than the viewport and clipping the right side. */
+  margin-left: 0;
+
   width: 100%;
-  max-width: 1400px;
-  min-height: 100vh;
+  max-width: 100%;
 
-  margin: 0 auto;
+  overflow: hidden;
+
+  background:
+    var(--ah-paper);
+}
+
+
+/* ----------------------------------
+   HEADER
+---------------------------------- */
+
+.afterhours-header {
+  width: 100%;
+
+  display: grid;
+
+  grid-template-columns:
+    minmax(0, 1fr)
+    auto
+    minmax(0, 1fr);
+
+  align-items: center;
+
+  gap: 20px;
 
   padding:
-    34px
-    clamp(28px, 7vw, 110px)
-    90px;
-}
+    16px
+    clamp(18px, 3vw, 48px);
 
+  border-bottom:
+    2px solid var(--ah-ink);
 
-/* ==================================
-   TOP BAR
-================================== */
+  background:
+    #e5d8c4;
 
-.elsewhere-top {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+  font-size: 9px;
+  font-weight: 700;
 
-  margin-bottom: clamp(70px, 10vw, 140px);
-
-  font-family: "DM Mono", monospace;
-  font-size: 11px;
+  letter-spacing: .08em;
 
   text-transform: uppercase;
-  letter-spacing: 0.08em;
 }
 
 
-.elsewhere-back {
-  color: var(--ink);
+.afterhours-exit {
+  justify-self: start;
+
+  color: var(--ah-ink);
 
   text-decoration: none;
-
-  transition:
-    opacity 0.2s ease,
-    transform 0.2s ease;
 }
 
 
-.elsewhere-back:hover {
-  opacity: 0.55;
+.afterhours-exit:hover {
+  color: var(--ah-red);
 
-  transform: translateX(-3px);
+  text-decoration:
+    line-through;
 }
 
 
-.elsewhere-status {
+.afterhours-logo {
+  font-family:
+    "Archivo Black",
+    Arial,
+    sans-serif;
+
+  font-size: 12px;
+
+  letter-spacing: -.03em;
+}
+
+
+.afterhours-closed {
+  justify-self: end;
+
   display: flex;
   align-items: center;
 
-  gap: 8px;
+  gap: 7px;
 
-  color: var(--muted);
+  color: #75695f;
+
+  white-space: nowrap;
 }
 
 
-.elsewhere-status-dot {
+.afterhours-closed span {
   width: 7px;
   height: 7px;
 
-  flex: 0 0 7px;
+  flex:
+    0
+    0
+    7px;
 
   border-radius: 50%;
 
-  background: var(--pink);
+  background: #8c8178;
+
+  box-shadow:
+    0 0 0 3px
+    rgba(140,129,120,.12);
+}
+
+
+/* ==================================
+   COVER
+================================== */
+
+.afterhours-cover {
+  position: relative;
+
+  width: 100%;
+  min-height: min(780px, 90vh);
+
+  padding:
+    clamp(50px, 7vw, 95px)
+    clamp(18px, 4vw, 55px)
+    55px;
+
+  border-bottom:
+    3px solid #0a0a0a;
+
+  overflow: hidden;
+}
+
+
+.cover-index {
+  position: absolute;
+
+  top: 22px;
+  left:
+    clamp(18px, 4vw, 55px);
+
+  font-size: 8px;
+  font-weight: 700;
+
+  letter-spacing: 0.1em;
+}
+
+
+.cover-warning {
+  position: absolute;
+
+  top: 25px;
+  right:
+    clamp(18px, 4vw, 55px);
+
+  font-size: 8px;
+
+  line-height: 1.4;
+
+  text-align: right;
+}
+
+
+/* ==================================
+   MAIN TITLE COMPOSITION
+================================== */
+
+.cover-title {
+  width: min(100%, 1180px);
+
+  margin:
+    50px
+    auto
+    0;
+
+  font-family:
+    "Archivo Black",
+    Arial,
+    sans-serif;
+
+  font-size:
+    clamp(78px, 11vw, 185px);
+
+  line-height: 0.72;
+
+  letter-spacing: -0.075em;
+
+  text-transform: uppercase;
+}
+
+
+.cover-title span {
+  display: block;
+}
+
+
+.cover-title-top {
+  width: 100%;
+  padding-left: 5%;
+  text-align: left;
+}
+
+
+.cover-title-middle {
+  width: 100%;
+  padding-left: 15%;
+  color: #96342f;
+  text-align: left;
+}
+
+
+.cover-title-bottom {
+  width: 100%;
+  padding-right: 2%;
+  text-align: right;
+}
+
+
+/* ==================================
+   INTRO COPY
+================================== */
+
+.cover-caption {
+  width: min(440px, 70%);
+
+  margin:
+    65px
+    auto
+    0;
+
+  transform:
+    translateX(-24%);
+
+  color: #55473c;
+
+  font-family:
+    "Newsreader",
+    Georgia,
+    serif;
+
+  font-size:
+    clamp(15px, 1.3vw, 19px);
+
+  font-style: italic;
+
+  line-height: 1.55;
+}
+
+
+/* ==================================
+   STICKER
+================================== */
+
+.cover-sticker {
+  position: absolute;
+
+  right:
+    max(
+      clamp(25px, 8vw, 120px),
+      calc((100vw - 1280px) / 2)
+    );
+
+  bottom: 95px;
+
+  width: 105px;
+  height: 105px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  background: #96342f;
+  color: #fff8ec;
+
+  font-family:
+    "Archivo Black",
+    sans-serif;
+
+  font-size: 13px;
+
+  line-height: 1.05;
+
+  text-align: center;
+
+  box-shadow:
+    7px 8px 0 rgba(73, 42, 30, .13);
+
+  transform:
+    rotate(7deg);
+}
+
+
+/* ==================================
+   FOOTNOTE
+================================== */
+
+.cover-footnote {
+  position: absolute;
+
+  left:
+    clamp(18px, 4vw, 55px);
+
+  bottom: 20px;
+
+  max-width:
+    calc(100% - 36px);
+
+  margin: 0;
+
+  color: #7d6e61;
+
+  font-size: 7px;
+
+  letter-spacing: 0.08em;
+
+  text-transform: uppercase;
+}
+
+
+/* ----------------------------------
+   TICKER
+---------------------------------- */
+
+.afterhours-ticker {
+  width: 100%;
+
+  overflow: hidden;
+
+  padding:
+    11px
+    0;
+
+  background:
+    var(--ah-red-dark);
+
+  color:
+    #f4eadb;
+}
+
+
+.afterhours-ticker-track {
+  width: max-content;
+
+  white-space: nowrap;
+
+  font-family:
+    "Space Mono",
+    monospace;
+
+  font-size: 10px;
+
+  letter-spacing: .05em;
 
   animation:
-    elsewhere-pulse
-    2s
-    ease-in-out
+    afterhoursTicker
+    38s
+    linear
     infinite;
 }
 
 
-@keyframes elsewhere-pulse {
+@keyframes afterhoursTicker {
 
-  0%,
-  100% {
-    opacity: 1;
-    transform: scale(1);
+  from {
+    transform:
+      translateX(0);
   }
 
-  50% {
-    opacity: 0.4;
-    transform: scale(0.75);
+  to {
+    transform:
+      translateX(-50%);
   }
 
 }
 
 
-/* ==================================
-   HERO
-================================== */
-
-.elsewhere-hero {
-  max-width: 1000px;
-
-  margin-bottom:
-    clamp(90px, 13vw, 180px);
-}
-
-
-.elsewhere-kicker {
-  margin:
-    0
-    0
-    22px;
-
-  font-family: "DM Mono", monospace;
-  font-size: 10px;
-
-  text-transform: uppercase;
-  letter-spacing: 0.15em;
-
-  color: var(--burgundy);
-}
-
-
-.elsewhere-title {
-  margin: 0;
-
-  font-family:
-    "Instrument Serif",
-    Georgia,
-    serif;
-
-  font-size:
-    clamp(76px, 14vw, 190px);
-
-  font-weight: 400;
-
-  line-height: 0.72;
-
-  letter-spacing: -0.055em;
-
-  color: var(--burgundy);
-}
-
-
-.elsewhere-title em {
-  display: block;
-
-  margin-left:
-    clamp(30px, 10vw, 160px);
-
-  font-weight: 400;
-
-  color: var(--ink);
-}
-
-
-.elsewhere-intro {
-  max-width: 570px;
-
-  margin:
-    clamp(48px, 6vw, 82px)
-    0
-    0
-    clamp(10px, 16vw, 230px);
-
-  font-family:
-    "Instrument Serif",
-    Georgia,
-    serif;
-
-  font-size:
-    clamp(25px, 3vw, 40px);
-
-  line-height: 1.05;
-}
-
-
-.elsewhere-intro em {
-  font-weight: 400;
-
-  color: var(--burgundy);
-}
-
-
-/* ==================================
+/* ----------------------------------
    CURRENTLY
-================================== */
+---------------------------------- */
 
-.currently {
-  display: grid;
+.afterhours-current {
+  position: relative;
 
-  grid-template-columns:
-    110px
-    1fr;
+  width: 100%;
+  max-width: 100%;
 
-  gap: 30px;
+  padding:
+    clamp(80px, 9vw, 140px)
+    clamp(20px, 6vw, 90px)
+    clamp(90px, 10vw, 150px);
 
-  padding: 20px 0;
-
-  margin-bottom: 100px;
-
-  border-top:
-    1px solid var(--line);
+  overflow: hidden;
 
   border-bottom:
-    1px solid var(--line);
+    2px solid var(--ah-ink);
+
+  background:
+    #d7c7ad;
 }
 
 
-.currently-label {
-  font-family:
-    "DM Mono",
-    monospace;
+.current-label {
+  margin-bottom:
+    clamp(30px, 4vw, 55px);
 
-  font-size: 9px;
+  color:
+    var(--ah-red-dark);
+
+  font-size: 8px;
+  font-weight: 700;
+
+  letter-spacing: .12em;
 
   text-transform: uppercase;
-  letter-spacing: 0.13em;
-
-  color: var(--burgundy);
 }
 
 
-.currently-text {
+.afterhours-current h2 {
+  width: 100%;
+  max-width: 1200px;
+
   margin: 0;
 
   font-family:
-    "DM Mono",
-    monospace;
+    "Archivo Black",
+    sans-serif;
+
+  font-size:
+    clamp(58px, 10vw, 145px);
+
+  line-height: .8;
+
+  letter-spacing: -.06em;
+
+  overflow-wrap: anywhere;
+}
+
+
+.afterhours-current h2 span {
+  color:
+    var(--ah-red);
+}
+
+
+.current-list {
+  width:
+    min(540px, 60%);
+
+  margin:
+    70px
+    0
+    0
+    auto;
+
+  border-top:
+    2px solid var(--ah-ink);
+}
+
+
+.current-list p {
+  margin: 0;
+
+  padding:
+    14px
+    0;
+
+  border-bottom:
+    1px solid
+    rgba(33,27,23,.55);
+
+  font-size: 10px;
+
+  line-height: 1.6;
+}
+
+
+.current-note {
+  position: absolute;
+
+  left:
+    clamp(20px, 6vw, 90px);
+
+  bottom: 65px;
+
+  max-width: 200px;
+
+  padding:
+    9px
+    12px;
+
+  background:
+    var(--ah-red);
+
+  color:
+    #f7eee0;
+
+  font-family:
+    Georgia,
+    serif;
 
   font-size: 11px;
 
-  line-height: 1.7;
+  font-style: italic;
 
-  color: var(--muted);
+  line-height: 1.35;
+
+  transform:
+    rotate(-2deg);
+
+  box-shadow:
+    4px
+    5px
+    0
+    rgba(71,45,32,.15);
 }
 
 
-/* ==================================
+/* ----------------------------------
    ENTRIES
-================================== */
+---------------------------------- */
 
-.elsewhere-feed {
-  max-width: 950px;
+.afterhours-entry {
+  width: 100%;
+  max-width: 100%;
+
+  padding:
+    24px
+    clamp(20px, 6vw, 90px)
+    clamp(85px, 10vw, 145px);
+
+  overflow: hidden;
+
+  border-bottom:
+    2px solid var(--ah-ink);
+
+  background:
+    #f1e8d8;
 }
 
 
-.elsewhere-entry {
+.entry-header {
+  width: 100%;
+
+  display: flex;
+
+  justify-content:
+    space-between;
+
+  gap: 20px;
+
+  padding-bottom: 14px;
+
+  border-bottom:
+    1px solid
+    var(--ah-ink);
+
+  color:
+    var(--ah-soft-ink);
+
+  font-size: 8px;
+  font-weight: 700;
+
+  letter-spacing: .1em;
+
+  text-transform: uppercase;
+}
+
+
+.entry-layout {
+  width: 100%;
+  max-width: 1300px;
+
   display: grid;
 
   grid-template-columns:
-    135px
-    1fr;
+    clamp(60px, 8vw, 120px)
+    minmax(0, 1fr);
 
   gap:
-    clamp(30px, 6vw, 90px);
+    clamp(25px, 5vw, 75px);
 
-  padding:
-    60px
-    0
-    85px;
-
-  border-top:
-    1px solid var(--line);
+  padding-top:
+    clamp(55px, 7vw, 100px);
 }
 
 
-.entry-meta {
+.entry-number {
   font-family:
-    "DM Mono",
-    monospace;
+    Georgia,
+    "Times New Roman",
+    serif;
 
-  font-size: 9px;
+  font-size:
+    clamp(52px, 7vw, 105px);
 
-  line-height: 1.8;
+  font-style: italic;
 
-  text-transform: uppercase;
-  letter-spacing: 0.09em;
+  line-height: .8;
 
-  color: var(--muted);
+  color:
+    var(--ah-red);
 }
 
 
-.entry-category {
+.entry-main {
+  width: 100%;
+  max-width: 100%;
+
+  min-width: 0;
+}
+
+
+.entry-main h2 {
+  width: 100%;
+  max-width: 950px;
+
+  margin: 0;
+
+  font-family:
+    "Archivo Black",
+    sans-serif;
+
+  font-size:
+    clamp(52px, 8vw, 115px);
+
+  line-height: .82;
+
+  letter-spacing: -.055em;
+
+  overflow-wrap: anywhere;
+}
+
+
+.entry-main h2 span {
   display: block;
 
-  margin-bottom: 6px;
-
-  color: var(--burgundy);
+  color:
+    var(--ah-red);
 }
 
 
-.entry-title {
-  max-width: 700px;
+.entry-deck {
+  width:
+    min(590px, 90%);
 
   margin:
+    45px
     0
-    0
-    24px;
+    0;
 
   font-family:
-    "Instrument Serif",
     Georgia,
+    "Times New Roman",
     serif;
 
   font-size:
-    clamp(37px, 5vw, 68px);
+    clamp(16px, 1.7vw, 21px);
 
-  font-weight: 400;
+  font-style: italic;
 
-  line-height: 0.98;
-
-  letter-spacing: -0.025em;
+  line-height: 1.55;
 }
 
 
-.entry-title em {
-  font-weight: 400;
+.entry-copy {
+  width:
+    min(510px, 78%);
 
-  color: var(--burgundy);
+  margin:
+    60px
+    0
+    0
+    auto;
+
+  color:
+    #51483f;
+
+  font-size: 11px;
+
+  line-height: 1.85;
 }
 
 
-.entry-body {
-  max-width: 620px;
+.entry-copy p {
+  margin:
+    0
+    0
+    1.4em;
+}
 
-  font-size: 15px;
+
+.entry-scrawl {
+  width: fit-content;
+  max-width: 90%;
+
+  margin:
+    55px
+    0
+    0
+    8%;
+
+  padding:
+    9px
+    12px;
+
+  background:
+    var(--ah-tobacco);
+
+  color:
+    #fff7e9;
+
+  font-family:
+    Georgia,
+    serif;
+
+  font-size: 12px;
+
+  font-style: italic;
+
+  transform:
+    rotate(-2deg);
+}
+
+
+.entry-bottom {
+  width: 100%;
+
+  display: flex;
+
+  justify-content:
+    space-between;
+
+  gap: 20px;
+
+  margin-top:
+    clamp(60px, 8vw, 110px);
+
+  padding-top: 12px;
+
+  border-top:
+    1px solid
+    var(--ah-ink);
+
+  color:
+    var(--ah-soft-ink);
+
+  font-size: 7px;
+
+  letter-spacing: .08em;
+
+  text-transform: uppercase;
+}
+
+
+/* ----------------------------------
+   DARK ENTRY
+---------------------------------- */
+
+.inverse-entry {
+  background:
+    #251d18;
+
+  color:
+    #eee2d1;
+
+  border-bottom-color:
+    #b7a58f;
+}
+
+
+.inverse-entry .entry-header,
+.inverse-entry .entry-bottom {
+  color:
+    #c6b7a5;
+
+  border-color:
+    #827262;
+}
+
+
+.inverse-entry .entry-copy {
+  color:
+    #cfc0af;
+}
+
+
+.inverse-entry .entry-number,
+.inverse-entry .entry-main h2 span {
+  color:
+    #c36a62;
+}
+
+
+.inverse-entry .entry-scrawl {
+  background:
+    #eee2d1;
+
+  color:
+    #251d18;
+}
+
+
+/* ----------------------------------
+   INTERMISSION
+---------------------------------- */
+
+.afterhours-break {
+  width: 100%;
+  max-width: 100%;
+
+  padding:
+    clamp(100px, 12vw, 185px)
+    clamp(18px, 4vw, 55px);
+
+  overflow: hidden;
+
+  text-align: center;
+
+  border-bottom:
+    2px solid
+    var(--ah-ink);
+
+  background:
+    #b69a79;
+}
+
+
+.afterhours-break > div,
+.afterhours-break > span {
+  font-size: 8px;
+
+  letter-spacing: .13em;
+
+  text-transform: uppercase;
+}
+
+
+.afterhours-break p {
+  width: 100%;
+  max-width: 1300px;
+
+  margin:
+    28px
+    auto
+    16px;
+
+  font-family:
+    "Archivo Black",
+    sans-serif;
+
+  font-size:
+    clamp(62px, 12vw, 170px);
+
+  line-height: .82;
+
+  letter-spacing: -.065em;
+
+  color:
+    #702724;
+
+  overflow-wrap: anywhere;
+}
+
+
+/* ----------------------------------
+   FOOTER
+---------------------------------- */
+
+.afterhours-footer {
+  width: 100%;
+  max-width: 100%;
+
+  display: grid;
+
+  grid-template-columns:
+    minmax(0, 1fr)
+    minmax(200px, 290px);
+
+  align-items: end;
+
+  gap:
+    clamp(35px, 6vw, 80px);
+
+  padding:
+    clamp(75px, 9vw, 125px)
+    clamp(20px, 6vw, 90px)
+    50px;
+
+  overflow: hidden;
+
+  background:
+    var(--ah-red-dark);
+
+  color:
+    #f5ead9;
+}
+
+
+.footer-big {
+  width: 100%;
+  max-width: 100%;
+
+  margin: 0;
+
+  font-family:
+    "Archivo Black",
+    sans-serif;
+
+  font-size:
+    clamp(62px, 9vw, 125px);
+
+  line-height: .75;
+
+  letter-spacing: -.06em;
+
+  overflow-wrap: anywhere;
+}
+
+
+.footer-right {
+  width: 100%;
+  max-width: 290px;
+
+  font-size: 8px;
 
   line-height: 1.8;
 
-  color: #403936;
+  letter-spacing: .06em;
 }
 
 
-.entry-body p {
+.footer-right p {
   margin:
     0
     0
-    1.2em;
+    25px;
 }
 
 
-.entry-body p:last-child {
-  margin-bottom: 0;
+.footer-right a {
+  color:
+    #f5ead9;
+
+  text-decoration:
+    underline;
+
+  text-underline-offset:
+    4px;
 }
 
 
 /* ==================================
-   LITTLE NOTES
+   TABLET / NARROW DESKTOP
+
+   Prevent the editorial title layout
+   from becoming too wide at intermediate
+   browser sizes.
 ================================== */
 
-.aside-note {
-  display: inline-block;
+@media (min-width: 701px) and (max-width: 1100px) {
 
-  margin-top: 25px;
+  .cover-title {
+    width: min(100%, 1000px);
 
-  padding:
-    7px
-    10px;
-
-  background: var(--pink);
-
-  font-family:
-    "DM Mono",
-    monospace;
-
-  font-size: 9px;
-
-  text-transform: uppercase;
-  letter-spacing: 0.07em;
-
-  transform: rotate(-1.5deg);
-}
+    font-size:
+      clamp(78px, 13vw, 135px);
+  }
 
 
-.aside-note.alt {
-  background: var(--cream-dark);
-
-  transform: rotate(1.5deg);
-}
-
-
-/* ==================================
-   FOOTER
-================================== */
-
-.elsewhere-footer {
-  display: flex;
-
-  justify-content: space-between;
-  align-items: flex-end;
-
-  gap: 30px;
-
-  margin-top: 80px;
-
-  padding-top: 30px;
-
-  border-top:
-    1px solid var(--line);
-}
+  .afterhours-current {
+    padding-left: 35px;
+    padding-right: 35px;
+  }
 
 
-.elsewhere-footer-big {
-  margin: 0;
-
-  font-family:
-    "Instrument Serif",
-    Georgia,
-    serif;
-
-  font-size:
-    clamp(36px, 6vw, 80px);
-
-  line-height: 0.9;
-
-  color: var(--burgundy);
-}
+  .afterhours-current h2 {
+    font-size:
+      clamp(62px, 9vw, 100px);
+  }
 
 
-.elsewhere-footer-small {
-  max-width: 260px;
+  .afterhours-entry {
+    padding-left: 35px;
+    padding-right: 35px;
+  }
 
-  margin: 0;
 
-  font-family:
-    "DM Mono",
-    monospace;
+  .entry-layout {
+    grid-template-columns:
+      70px
+      minmax(0, 1fr);
 
-  font-size: 9px;
+    gap: 35px;
+  }
 
-  line-height: 1.7;
 
-  text-align: right;
+  .entry-main h2 {
+    font-size:
+      clamp(54px, 7.5vw, 82px);
+  }
 
-  text-transform: uppercase;
-  letter-spacing: 0.07em;
 
-  color: var(--muted);
+  .entry-copy {
+    width:
+      min(500px, 90%);
+  }
+
+
+  .afterhours-break p {
+    font-size:
+      clamp(65px, 11vw, 120px);
+  }
+
+
+  .footer-big {
+    font-size:
+      clamp(60px, 8vw, 90px);
+  }
+
 }
 
 
 /* ==================================
-   ELSEWHERE — MOBILE
+   MOBILE
 ================================== */
 
 @media (max-width: 700px) {
 
-  .elsewhere {
+  .afterhours-header {
+    grid-template-columns:
+      auto
+      1fr;
+
+    gap: 10px;
+
     padding:
-      24px
-      20px
-      65px;
+      14px
+      15px;
   }
 
 
-  .elsewhere-top {
-    margin-bottom: 80px;
-
-    font-size: 9px;
+  .afterhours-logo {
+    display: none;
   }
 
 
-  .elsewhere-hero {
-    margin-bottom: 90px;
+  .afterhours-closed {
+    justify-self: end;
+
+    font-size: 7px;
   }
 
 
-  .elsewhere-title {
+  .afterhours-cover {
+    min-height: 620px;
+
+    padding:
+      65px
+      15px
+      45px;
+  }
+
+
+  .cover-index {
+    left: 15px;
+
+    font-size: 6px;
+  }
+
+
+  .cover-warning {
+    right: 15px;
+
+    max-width: 145px;
+
+    font-size: 6px;
+  }
+
+
+  .cover-title {
+    margin-top: 55px;
+
     font-size:
-      clamp(72px, 25vw, 115px);
+      clamp(67px, 22vw, 100px);
 
-    line-height: 0.75;
+    line-height: .75;
+
+    letter-spacing: -.07em;
   }
 
 
-  .elsewhere-title em {
-    margin-left: 28px;
-  }
+.cover-title-top {
+  padding-left: 0;
+}
 
 
-  .elsewhere-intro {
+.cover-title-middle {
+  margin-left: 0;
+  padding-left: 10%;
+}
+
+
+.cover-title-bottom {
+  padding-right: 0;
+}
+
+  .cover-caption {
+    width: 65%;
+
     margin:
-      48px
+      50px
       0
       0
-      25px;
+      5%;
 
-    max-width: 310px;
+    font-size: 12px;
 
-    font-size: 27px;
+    line-height: 1.5;
   }
 
 
-  .currently {
-    grid-template-columns: 1fr;
+  .cover-sticker {
+    right: 17px;
+    bottom: 72px;
 
-    gap: 8px;
+    width: 70px;
+    height: 70px;
 
-    margin-bottom: 65px;
+    padding: 8px;
+
+    font-size: 8px;
   }
 
 
-  .elsewhere-entry {
-    grid-template-columns: 1fr;
+  .cover-footnote {
+    left: 15px;
+    bottom: 14px;
 
-    gap: 22px;
+    max-width:
+      calc(100% - 30px);
 
+    font-size: 5px;
+  }
+
+
+  .afterhours-current {
     padding:
-      45px
-      0
-      65px;
+      75px
+      15px
+      85px;
   }
 
 
-  .entry-meta {
-    display: flex;
-
-    gap: 12px;
-  }
-
-
-  .entry-category {
-    margin-bottom: 0;
-  }
-
-
-  .entry-title {
+  .afterhours-current h2 {
     font-size:
-      clamp(38px, 12vw, 53px);
+      clamp(50px, 15vw, 70px);
+
+    line-height: .82;
   }
 
 
-  .entry-body {
-    font-size: 14px;
+  .current-list {
+    width: 100%;
+
+    margin-top: 55px;
   }
 
 
-  .elsewhere-footer {
-    display: block;
-
-    margin-top: 50px;
+  .current-list p {
+    font-size: 8px;
   }
 
 
-  .elsewhere-footer-small {
+  .current-note {
+    position: static;
+
+    width: fit-content;
+
+    margin-top: 35px;
+  }
+
+
+  .afterhours-entry {
+    padding:
+      18px
+      15px
+      75px;
+  }
+
+
+  .entry-layout {
+    grid-template-columns:
+      1fr;
+
+    gap: 28px;
+
+    padding-top: 50px;
+  }
+
+
+  .entry-number {
+    font-size: 48px;
+  }
+
+
+  .entry-main h2 {
+    font-size:
+      clamp(46px, 14vw, 65px);
+
+    line-height: .83;
+  }
+
+
+  .entry-deck {
+    width: 100%;
+
     margin-top: 35px;
 
-    text-align: left;
+    font-size: 15px;
+  }
+
+
+  .entry-copy {
+    width:
+      calc(100% - 20px);
+
+    margin:
+      42px
+      0
+      0
+      20px;
+
+    font-size: 10px;
+  }
+
+
+  .entry-scrawl {
+    max-width:
+      calc(100% - 10px);
+
+    margin:
+      40px
+      0
+      0
+      5px;
+
+    font-size: 10px;
+  }
+
+
+  .entry-bottom {
+    display: block;
+
+    font-size: 6px;
+
+    line-height: 1.7;
+  }
+
+
+  .entry-bottom span {
+    display: block;
+
+    margin-top: 5px;
+  }
+
+
+  .afterhours-break {
+    padding:
+      95px
+      15px;
+  }
+
+
+  .afterhours-break p {
+    font-size:
+      clamp(58px, 18vw, 82px);
+  }
+
+
+  .afterhours-footer {
+    display: block;
+
+    padding:
+      70px
+      15px
+      45px;
+  }
+
+
+  .footer-big {
+    font-size:
+      clamp(58px, 18vw, 82px);
+  }
+
+
+  .footer-right {
+    margin-top: 65px;
   }
 
 }
 
+
 /* ==================================
-   BACK TO TOP — VISIBILITY
+   VERY SMALL PHONES
 ================================== */
 
-.back-to-top {
-  opacity: 0;
-  visibility: hidden;
-  pointer-events: none;
+@media (max-width: 380px) {
 
-  transition:
-    opacity 0.25s ease,
-    visibility 0.25s ease;
+  .cover-title {
+    font-size: 63px;
+  }
+
+
+  .entry-main h2 {
+    font-size: 44px;
+  }
+
+
+  .afterhours-current h2 {
+    font-size: 47px;
+  }
+
+
+  .afterhours-break p {
+    font-size: 55px;
+  }
+
+
+  .footer-big {
+    font-size: 55px;
+  }
+
 }
 
-.back-to-top.visible {
-  opacity: 1;
-  visibility: visible;
-  pointer-events: auto;
+
+/* ==================================
+   REDUCED MOTION
+================================== */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .afterhours-ticker-track {
+    animation: none;
+  }
+
+}
+
+
+/* ==================================
+   ELSEWHERE — WARMER PALETTE
+================================== */
+
+body.elsewhere-page {
+  background: #f1e6d2;
+  color: #201915;
+}
+
+
+.afterhours-header {
+  background: #e8d7bb;
+
+  border-color: #35261f;
+}
+
+
+.afterhours-cover {
+  background: #f3e9d8;
+
+  border-color: #35261f;
+}
+
+
+.cover-title {
+  color: #211915;
+}
+
+
+.cover-title-middle {
+  color: #96372f;
+}
+
+
+.cover-caption {
+  color: #57473c;
+}
+
+
+.cover-sticker {
+  background: #96372f;
+  color: #fff7e9;
+}
+
+
+.afterhours-ticker {
+  background: #762a28;
+  color: #fff4e4;
+}
+
+
+.afterhours-current {
+  background: #dcc9aa;
+
+  border-color: #35261f;
+}
+
+
+.afterhours-current h2 span,
+.entry-number,
+.entry-main h2 span,
+.afterhours-break p {
+  color: #96372f;
+}
+
+
+.current-list,
+.current-list p {
+  border-color: #665346;
+}
+
+
+.current-note {
+  background: #96372f;
+  color: #fff7e9;
+}
+
+
+.afterhours-entry {
+  background: #f3e9d8;
+
+  border-color: #35261f;
+}
+
+
+.inverse-entry {
+  background: #34251f;
+  color: #fff3df;
+
+  border-color: #34251f;
+}
+
+
+.afterhours-break {
+  background: #e4d3b8;
+
+  border-color: #35261f;
+}
+
+
+.afterhours-footer {
+  background: #8f332f;
+  color: #fff3df;
 }
 
