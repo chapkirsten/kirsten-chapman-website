@@ -3644,17 +3644,13 @@ body {
 
 
 .portrait {
-  filter:
-    saturate(.72)
-    contrast(1.04);
+  filter: none;
 }
 
 
 .portrait-area:hover
 .portrait {
-  filter:
-    saturate(.9)
-    contrast(1.02);
+  filter: none;
 }
 
 
@@ -4298,4 +4294,364 @@ button:focus-visible {
 
 .research-page-hero .mini-heading {
   color: var(--burgundy);
+}
+
+/* ==================================
+   ACCESSIBILITY + NAVIGATION UPDATES
+================================== */
+
+/* Keep the current page visibly selected at every scroll position. */
+.sidebar nav a.active,
+.sidebar nav a.active:hover {
+  color: #fffaf0;
+  font-style: italic;
+  transform: translateX(5px);
+}
+
+/* Portrait uses the original image colors. */
+.portrait,
+.portrait-area:hover .portrait {
+  filter: none !important;
+}
+
+.theme-toggle {
+  position: fixed;
+  top: 22px;
+  right: 24px;
+  z-index: 200;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 8px 11px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: "DM Mono", monospace;
+  font-size: 9px;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  cursor: pointer;
+  box-shadow: 0 2px 10px #0000000c;
+}
+.theme-toggle:hover { border-color: var(--oxblood); color: var(--oxblood); }
+.theme-toggle-icon { font-size: 13px; line-height: 1; }
+
+.back-to-top-wrap {
+  display: flex;
+  justify-content: flex-end;
+  padding: 34px 7vw 42px;
+  border-top: 1px solid var(--line);
+}
+.back-to-top {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  color: var(--forest);
+  font-family: "DM Mono", monospace;
+  font-size: 10px;
+  letter-spacing: .07em;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+.back-to-top span { font-family: Georgia, serif; font-size: 18px; transition: transform .2s ease; }
+.back-to-top:hover span { transform: translateY(-4px); }
+
+.publication-search-wrap {
+  width: min(620px, 100%);
+  margin: 0 0 26px;
+}
+.publication-search-wrap > label {
+  display: block;
+  margin-bottom: 8px;
+  color: var(--muted);
+  font-family: "DM Mono", monospace;
+  font-size: 9px;
+  letter-spacing: .1em;
+}
+.publication-search-box {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 13px;
+  border: 1px solid var(--line);
+  background: var(--paper);
+}
+.publication-search-box > span { color: var(--oxblood); font-size: 18px; }
+.publication-search-box input {
+  min-width: 0;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  color: var(--ink);
+  font: 14px "Inter", Arial, sans-serif;
+}
+.publication-search-box input::placeholder { color: var(--muted); opacity: .75; }
+.publication-search-box:focus-within { border-color: var(--oxblood); box-shadow: 0 0 0 2px color-mix(in srgb, var(--oxblood) 12%, transparent); }
+#publication-search-clear { border: 0; background: transparent; color: var(--muted); font-size: 20px; cursor: pointer; }
+.publication-search-status { min-height: 16px; margin: 6px 0 0; color: var(--muted); font: 9px "DM Mono", monospace; text-transform: uppercase; letter-spacing: .06em; }
+
+.cv-jump-nav {
+  position: sticky;
+  top: 0;
+  z-index: 80;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 13px 7vw;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  background: color-mix(in srgb, var(--cream) 94%, transparent);
+  backdrop-filter: blur(10px);
+}
+.cv-jump-nav > span { flex: 0 0 auto; color: var(--muted); font: 9px "DM Mono", monospace; letter-spacing: .1em; }
+.cv-jump-nav > div { display: flex; flex-wrap: wrap; gap: 7px; }
+.cv-jump-nav a {
+  padding: 6px 10px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  color: var(--forest);
+  font: 9px "DM Mono", monospace;
+  letter-spacing: .03em;
+  text-decoration: none;
+  transition: .2s ease;
+}
+.cv-jump-nav a:hover { border-color: var(--oxblood); color: var(--oxblood); transform: translateY(-1px); }
+.cv-category { scroll-margin-top: 70px; }
+
+/* Dark mode: light remains the default and this palette is only applied after toggling. */
+html[data-theme="dark"] {
+  --cream: #171b18;
+  --cream-dark: #222822;
+  --ink: #eee9de;
+  --muted: #aaa99f;
+  --burgundy: #c18489;
+  --burgundy-dark: #9db8a5;
+  --pink: #66766b;
+  --pink-light: #29342d;
+  --line: #3b433d;
+  --forest: #a9c5b0;
+  --oxblood: #d2959b;
+  --paper: #202521;
+}
+html[data-theme="dark"] body,
+html[data-theme="dark"] .hero { background: var(--cream); color: var(--ink); }
+html[data-theme="dark"] .sidebar { background: #10251c; }
+html[data-theme="dark"] .hero-statement { color: var(--ink); }
+html[data-theme="dark"] .cv-jump-nav { background: color-mix(in srgb, var(--cream) 94%, transparent); }
+html[data-theme="dark"] .theme-toggle { box-shadow: 0 2px 10px #0004; }
+html[data-theme="dark"] .publication-search-box input { color-scheme: dark; }
+
+@media (max-width: 760px) {
+  .theme-toggle { top: 14px; right: 14px; }
+  .theme-toggle-label { display: none; }
+  .cv-jump-nav { align-items: flex-start; padding: 12px 20px; overflow-x: auto; }
+  .cv-jump-nav > div { flex-wrap: nowrap; }
+  .cv-jump-nav a { white-space: nowrap; }
+  .back-to-top-wrap { padding-left: 20px; padding-right: 20px; }
+}
+
+/* ==================================
+   POLISH: FLOATING TOP, THEME SWITCH,
+   PUBLICATION CONTROLS + READABILITY
+================================== */
+
+/* A quiet, persistent return-to-top control. */
+.back-to-top-wrap {
+  position: fixed;
+  right: 22px;
+  bottom: 20px;
+  z-index: 150;
+  display: block;
+  padding: 0;
+  border: 0;
+  pointer-events: none;
+}
+
+.back-to-top {
+  pointer-events: auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 10px;
+  border: 1px solid color-mix(in srgb, var(--forest) 35%, var(--line));
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--cream) 88%, transparent);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  color: var(--forest);
+  font-size: 10px;
+  box-shadow: 0 2px 10px rgba(0,0,0,.05);
+  opacity: .78;
+  transition: opacity .2s ease, transform .2s ease, border-color .2s ease;
+}
+
+.back-to-top:hover {
+  opacity: 1;
+  transform: translateY(-2px);
+  border-color: var(--forest);
+}
+
+.back-to-top span { font-size: 15px; }
+
+/* Theme control now lives quietly in the sidebar. */
+.theme-toggle {
+  position: static;
+  width: max-content;
+  z-index: auto;
+  display: grid;
+  grid-template-columns: auto auto auto;
+  align-items: center;
+  gap: 6px;
+  margin: 0 0 18px;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  color: rgba(255,250,240,.62);
+  box-shadow: none;
+  font-family: "DM Mono", monospace;
+  font-size: 9px;
+  letter-spacing: .03em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.theme-toggle:hover { color: #fffaf0; }
+.theme-toggle-label,
+.theme-toggle-alt { transition: opacity .2s ease; }
+.theme-toggle-alt { opacity: .52; }
+
+.theme-switch {
+  position: relative;
+  width: 28px;
+  height: 14px;
+  border: 1px solid rgba(255,250,240,.35);
+  border-radius: 999px;
+}
+
+.theme-switch > span {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(255,250,240,.82);
+  transition: transform .2s ease, background .2s ease;
+}
+
+html[data-theme="dark"] .theme-switch > span { transform: translateX(14px); }
+html[data-theme="dark"] .theme-toggle-label { opacity: .52; }
+html[data-theme="dark"] .theme-toggle-alt { opacity: 1; }
+html[data-theme="dark"] .theme-toggle { box-shadow: none; }
+
+/* Publication controls read in a clear sequence: Find → Search → Filter. */
+.publication-search-wrap { margin-bottom: 20px; }
+.publication-search-wrap > label,
+.publication-filter-label {
+  color: var(--muted);
+  font-family: "DM Mono", monospace;
+  font-size: 10px;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+.publication-filter-label { margin: 0 0 9px; }
+.publication-search-wrap > label { margin-bottom: 9px; }
+
+/* Readability pass: preserve the editorial hierarchy while avoiding tiny UI copy. */
+.sidebar-status { font-size: 10px; }
+.sidebar nav a span { font-size: 9px; }
+.sidebar-bottom > p { font-size: 9px; }
+.section-marker,
+.mini-heading,
+.card-label,
+.question-number,
+.pub-number,
+.pub-meta,
+.portrait-note span,
+.full-pub-top,
+.bibtex-label,
+.bibtex-copy,
+.cv-entry-date,
+.cv-category-heading span { font-size: max(9px, 0.56rem); }
+
+.social-links a,
+.publication-search-status,
+.cv-jump-nav > span,
+.cv-jump-nav a { font-size: 10px; }
+
+.contact-card-label,
+.full-pub-links,
+.cv-entry-meta { font-size: 9px; }
+
+@media (max-width: 760px) {
+  .theme-toggle {
+    position: static;
+    margin-bottom: 14px;
+  }
+  .theme-toggle-label { display: inline; }
+  .back-to-top-wrap { right: 14px; bottom: 14px; padding: 0; }
+  .back-to-top { padding: 6px 9px; }
+}
+
+/* ==================================
+   DARK MODE CONTRAST PASS
+   Keep editorial accent sections dark enough for light text.
+================================== */
+html[data-theme="dark"] .research {
+  background: #20362c;
+  color: #f3efe6;
+}
+html[data-theme="dark"] .research .section-marker.light,
+html[data-theme="dark"] .research .research-title h2,
+html[data-theme="dark"] .research .card-content h3 {
+  color: #f3efe6;
+}
+html[data-theme="dark"] .research .section-marker.light div {
+  background: rgba(243,239,230,.42);
+}
+html[data-theme="dark"] .research .research-title h2 em {
+  color: #c8d8cd;
+}
+html[data-theme="dark"] .research .research-title > p,
+html[data-theme="dark"] .research .card-content > p {
+  color: #d4ddd7;
+}
+html[data-theme="dark"] .research .question-number,
+html[data-theme="dark"] .research .card-label,
+html[data-theme="dark"] .research .card-bottom {
+  color: #c5d3c9;
+}
+html[data-theme="dark"] .research .symbol {
+  color: #e0a5a8;
+}
+html[data-theme="dark"] .research-grid,
+html[data-theme="dark"] .research-card {
+  border-color: rgba(243,239,230,.24);
+}
+html[data-theme="dark"] .research .card-bottom {
+  border-top-color: rgba(243,239,230,.18);
+}
+
+/* Make muted copy comfortably readable throughout dark mode. */
+html[data-theme="dark"] .intro-columns p,
+html[data-theme="dark"] .publications p,
+html[data-theme="dark"] .cv-page p,
+html[data-theme="dark"] .research-page p,
+html[data-theme="dark"] .subpage-meta,
+html[data-theme="dark"] .pub-meta,
+html[data-theme="dark"] .cv-entry-date {
+  color: #bfc2bb;
+}
+
+/* Form controls should remain clearly legible against dark surfaces. */
+html[data-theme="dark"] .publication-search-box input {
+  background: #202521;
+  color: #eee9de;
+  border-color: #505a52;
+}
+html[data-theme="dark"] .publication-search-box input::placeholder {
+  color: #9fa59f;
 }

@@ -23,7 +23,7 @@
 
   <title>CV — Kirsten Chapman</title>
 
-<link rel="stylesheet" href="styles.css?v=8">
+<link rel="stylesheet" href="styles.css?v=10">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -31,7 +31,8 @@
 </head>
 
 
-<body>
+<body id="top">
+
 
 
 <!-- ==============================
@@ -79,6 +80,12 @@
 
 
   <div class="sidebar-bottom">
+
+    <button class="theme-toggle" type="button" aria-label="Switch to dark mode" title="Switch to dark mode">
+      <span class="theme-toggle-label">Light</span>
+      <span class="theme-switch" aria-hidden="true"><span></span></span>
+      <span class="theme-toggle-alt">Dark</span>
+    </button>
 
     <div class="social-links">
 
@@ -179,13 +186,25 @@
 
 </section>
 
+<nav class="cv-jump-nav" aria-label="Jump to CV section">
+  <span>JUMP TO</span>
+  <div>
+    <a href="#education">Education</a>
+    <a href="#experience">Experience</a>
+    <a href="#awards">Awards</a>
+    <a href="#service">Service</a>
+    <a href="#events">Invited Events</a>
+    <a href="#methods">Methods & Skills</a>
+  </div>
+</nav>
+
 
 
 <!-- ==============================
      EDUCATION
 ============================== -->
 
-<section class="cv-category">
+<section id="education" class="cv-category">
 
   <div class="cv-category-heading">
 
@@ -285,7 +304,7 @@
      EXPERIENCE
 ============================== -->
 
-<section class="cv-category">
+<section id="experience" class="cv-category">
 
   <div class="cv-category-heading">
 
@@ -392,7 +411,7 @@
      AWARDS & FELLOWSHIPS
 ============================== -->
 
-<section class="cv-category">
+<section id="awards" class="cv-category">
 
   <div class="cv-category-heading">
 
@@ -526,7 +545,7 @@
      ORGANIZING & SERVICE
 ============================== -->
 
-<section class="cv-category">
+<section id="service" class="cv-category">
 
   <div class="cv-category-heading">
 
@@ -705,7 +724,7 @@
      INVITED EVENTS
 ============================== -->
 
-<section class="cv-category">
+<section id="events" class="cv-category">
 
   <div class="cv-category-heading">
 
@@ -786,7 +805,7 @@
      METHODS & SKILLS
 ============================== -->
 
-<section class="cv-category methods-section">
+<section id="methods" class="cv-category methods-section">
 
   <div class="cv-category-heading">
 
@@ -918,6 +937,12 @@
 </section>
 
 
+
+<div class="back-to-top-wrap">
+  <a class="back-to-top" href="#top" aria-label="Back to top">
+    <span>↑</span> Back to top
+  </a>
+</div>
 
 </main>
 

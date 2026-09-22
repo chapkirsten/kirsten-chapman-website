@@ -23,7 +23,7 @@
 
   <title>Publications — Kirsten Chapman</title>
 
-<link rel="stylesheet" href="styles.css?v=8">
+<link rel="stylesheet" href="styles.css?v=10">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -31,7 +31,8 @@
 </head>
 
 
-<body>
+<body id="top">
+
 
 
 <!-- ==============================
@@ -79,6 +80,12 @@
 
 
   <div class="sidebar-bottom">
+
+    <button class="theme-toggle" type="button" aria-label="Switch to dark mode" title="Switch to dark mode">
+      <span class="theme-toggle-label">Light</span>
+      <span class="theme-switch" aria-hidden="true"><span></span></span>
+      <span class="theme-toggle-alt">Dark</span>
+    </button>
 
     <div class="social-links">
 
@@ -200,10 +207,22 @@
 
     <div></div>
 
-    <span>FILTER WORK</span>
+    <span>FIND WORK</span>
 
   </div>
 
+
+  <div class="publication-search-wrap">
+    <label for="publication-search">SEARCH PAPERS</label>
+    <div class="publication-search-box">
+      <span aria-hidden="true">⌕</span>
+      <input id="publication-search" type="search" placeholder="Title, author, topic, venue…" autocomplete="off">
+      <button id="publication-search-clear" type="button" aria-label="Clear publication search" hidden>×</button>
+    </div>
+    <p class="publication-search-status" id="publication-search-status" aria-live="polite"></p>
+  </div>
+
+  <div class="publication-filter-label">FILTER BY TYPE</div>
 
   <div
     class="pub-legend"
@@ -1253,6 +1272,12 @@
 
 </section>
 
+
+<div class="back-to-top-wrap">
+  <a class="back-to-top" href="#top" aria-label="Back to top">
+    <span>↑</span> Back to top
+  </a>
+</div>
 
 </main>
 
