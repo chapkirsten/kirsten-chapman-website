@@ -6874,3 +6874,265 @@ body.elsewhere-page {
     display: inline-block;
   }
 }
+/* ==================================
+   ELSEWHERE — SEPTEMBER PHONE FIX
+   Let the month stay as a whole word, but size it to the available width.
+================================== */
+@media (max-width: 700px) {
+  .volume-intro h2 {
+    width: 100%;
+    max-width: calc(100vw - 30px);
+    font-size: clamp(40px, 14vw, 68px);
+    white-space: normal;
+    word-break: keep-all;
+    overflow-wrap: normal;
+  }
+}
+
+@media (max-width: 360px) {
+  .volume-intro h2 {
+    font-size: 13.5vw;
+  }
+}
+
+/* ==================================
+   FINAL POLISH — ELSEWHERE COVER + MOBILE THEME ICON
+================================== */
+
+/* On wide screens, keep the oversized cover composition visually tight.
+   Mobile/tablet spacing is intentionally left unchanged. */
+@media (min-width: 1101px) {
+  .cover-title-bottom {
+    transform: translateY(-0.10em);
+  }
+}
+
+/* The compact theme control sits on the dark mobile header, so the
+   moon/sun needs to stay light rather than inheriting the page ink color. */
+@media (max-width: 850px) {
+  .sidebar-bottom .theme-toggle,
+  .sidebar-bottom .theme-toggle:hover,
+  .sidebar-bottom .theme-toggle:focus-visible {
+    color: #fffaf0;
+  }
+
+  .sidebar-bottom .theme-toggle::after {
+    color: #fffaf0;
+  }
+}
+
+/* ==================================
+   ELSEWHERE — WIDE COVER TITLE TUNE
+   Keep the editorial mobile stack, but
+   make the desktop title read as a tighter
+   two-line lockup: “NOT AT” / “WORK”.
+================================== */
+@media (min-width: 1101px) {
+  .cover-title {
+    display: grid;
+    grid-template-columns: max-content max-content;
+    justify-content: center;
+    align-items: end;
+    column-gap: 0.13em;
+    row-gap: 0;
+    line-height: 0.78;
+  }
+
+  .cover-title-top,
+  .cover-title-middle,
+  .cover-title-bottom {
+    width: auto;
+    margin: 0;
+    padding: 0;
+  }
+
+  .cover-title-top,
+  .cover-title-middle {
+    text-align: left;
+  }
+
+  .cover-title-bottom {
+    grid-column: 1 / -1;
+    justify-self: center;
+    margin-top: 0.03em;
+    text-align: center;
+  }
+}
+
+
+/* ==================================
+   ELSEWHERE — MID-WIDTH COVER TITLE
+   At tablet / half-window widths, return to the original
+   three-line editorial stack instead of squeezing the
+   wide-screen two-line lockup.
+================================== */
+@media (min-width: 701px) and (max-width: 1100px) {
+  .cover-title {
+    display: block;
+    line-height: 0.74;
+  }
+
+  .cover-title-top,
+  .cover-title-middle,
+  .cover-title-bottom {
+    display: block;
+    width: 100%;
+    margin: 0;
+  }
+
+  .cover-title-top {
+    padding-left: 5%;
+    text-align: left;
+  }
+
+  .cover-title-middle {
+    padding-left: 15%;
+    text-align: left;
+  }
+
+  .cover-title-bottom {
+    padding-right: 2%;
+    text-align: right;
+    transform: none;
+  }
+}
+
+/* ==================================
+   ELSEWHERE — COHESIVE COVER TITLE
+   Keep NOT / AT / WORK as one composition at every width.
+   The words may stay on separate lines, but their horizontal
+   offsets remain close enough that no large mid-width gap appears.
+================================== */
+@media (min-width: 701px) {
+  .cover-title {
+    display: block;
+    width: min(100%, 1180px);
+    line-height: 0.72;
+  }
+
+  .cover-title-top,
+  .cover-title-middle,
+  .cover-title-bottom {
+    display: block;
+    width: max-content;
+    max-width: 100%;
+    margin: 0;
+    padding: 0;
+    text-align: left;
+    transform: none;
+  }
+
+  .cover-title-top {
+    margin-left: 5%;
+  }
+
+  .cover-title-middle {
+    margin-left: 14%;
+  }
+
+  .cover-title-bottom {
+    margin-left: clamp(18%, 20vw, 27%);
+    margin-top: 0.015em;
+  }
+}
+
+@media (min-width: 1101px) {
+  .cover-title-bottom {
+    margin-left: clamp(19%, 21vw, 28%);
+  }
+}
+
+/* ==================================
+   ELSEWHERE — FINAL COVER LOCKUP
+   Medium + desktop: keep the title as one compact unit:
+   NOT / AT WORK. Small-screen styling remains unchanged.
+================================== */
+@media (min-width: 701px) {
+  .cover-title {
+    display: grid;
+    grid-template-columns: max-content max-content;
+    grid-template-rows: auto auto;
+    width: max-content;
+    max-width: calc(100% - 40px);
+    margin-left: auto;
+    margin-right: auto;
+    column-gap: 0.13em;
+    row-gap: 0;
+    line-height: 0.72;
+  }
+
+  .cover-title-top,
+  .cover-title-middle,
+  .cover-title-bottom {
+    display: block;
+    width: max-content;
+    max-width: none;
+    margin: 0;
+    padding: 0;
+    text-align: left;
+    transform: none;
+  }
+
+  .cover-title-top {
+    grid-column: 1 / -1;
+    grid-row: 1;
+    justify-self: start;
+  }
+
+  .cover-title-middle {
+    grid-column: 1;
+    grid-row: 2;
+  }
+
+  .cover-title-bottom {
+    grid-column: 2;
+    grid-row: 2;
+  }
+}
+
+/* Give the lockup a little more breathing room from the viewport at
+   intermediate browser widths without separating the words. */
+@media (min-width: 701px) and (max-width: 1100px) {
+  .cover-title {
+    font-size: clamp(70px, 10.5vw, 116px);
+  }
+}
+
+/* ==================================
+   ELSEWHERE — FINAL STACKED TITLE
+   Keep NOT / AT / WORK as one stable three-line lockup at every width.
+================================== */
+.cover-title {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: max-content;
+  max-width: calc(100% - 40px);
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 0.72;
+}
+
+.cover-title-top,
+.cover-title-middle,
+.cover-title-bottom {
+  display: block;
+  width: max-content;
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
+  text-align: left;
+  transform: none;
+}
+
+.cover-title-middle,
+.cover-title-bottom {
+  margin-top: 0.015em;
+}
+
+@media (max-width: 700px) {
+  .cover-title {
+    width: max-content;
+    max-width: calc(100% - 30px);
+  }
+}
