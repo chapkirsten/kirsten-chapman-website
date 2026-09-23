@@ -172,8 +172,8 @@
      </p>
 
      <div aria-label="Choose how many rambles to show" class="ramble-view-controls">
-      <span>
-       SHOW
+      <span class="ramble-total-label">
+       RAMBLES · SHOW
       </span>
       <button class="ramble-count active" data-count="5" type="button">
        5
@@ -812,6 +812,8 @@
    (function () {
   const items = Array.from(document.querySelectorAll('.ramble-item'));
   const buttons = document.querySelectorAll('.ramble-count');
+  const totalLabel = document.querySelector('.ramble-total-label');
+  if (totalLabel) totalLabel.textContent = `${items.length} RAMBLES · SHOW`;
   function showRambles(value) {
     const limit = value === 'all' ? items.length : Number(value);
     items.forEach((item, i) => {
