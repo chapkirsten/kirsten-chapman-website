@@ -8489,3 +8489,74 @@ body.elsewhere-page {
     object-position: center 44% !important;
   }
 }
+
+
+/* ==================================
+   ELSEWHERE / CLOCK-OUT ENTRY
+   Desktop: a quiet link beneath the theme switch.
+   Mobile: the same cue moves into the status row.
+================================== */
+.clock-out-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  width: max-content;
+  margin: -7px 0 5px;
+  color: rgba(255,250,240,.58);
+  font-family: "DM Mono", monospace;
+  font-size: 9px;
+  letter-spacing: .03em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: color .2s ease, transform .2s ease;
+}
+
+.clock-out-link:hover {
+  color: #fffaf0;
+  transform: translateX(2px);
+}
+
+.clock-out-dot {
+  width: 7px;
+  height: 7px;
+  flex: 0 0 7px;
+  border-radius: 50%;
+  background: #b67a79;
+  animation: pulse 2.2s ease-in-out infinite;
+}
+
+.mobile-clock-out { display: none; }
+
+@media (max-width: 850px) {
+  .clock-out-link { display: none; }
+
+  .sidebar-status {
+    flex: 1 1 auto;
+    min-width: 0;
+  }
+
+  .desktop-status-dot { display: none; }
+
+  .status-text { white-space: nowrap; }
+
+  .mobile-clock-out {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-left: auto;
+    color: #aebcaf;
+    font-family: "DM Mono", monospace;
+    font-size: 9px;
+    letter-spacing: .03em;
+    text-transform: uppercase;
+    text-decoration: none;
+    white-space: nowrap;
+  }
+
+  .mobile-clock-out:hover { color: #fffaf0; }
+  .mobile-clock-out .status-dot { flex: 0 0 7px; }
+}
+
+@media (max-width: 430px) {
+  .mobile-clock-out { font-size: 8px; gap: 5px; }
+}
