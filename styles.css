@@ -8463,3 +8463,29 @@ body.elsewhere-page {
     font-size: 6px;
   }
 }
+
+/* FINAL PHONE PHOTO SCALE — desktop/tablet intentionally untouched */
+@media (max-width: 600px) {
+  .cover-collage .cover-visual-cluster {
+    width: min(84vw, 330px) !important;
+    max-width: calc(100vw - 44px) !important;
+    margin: 0 auto !important;
+    padding: 0 10px 12px 0 !important;
+  }
+
+  .cover-collage .elsewhere-hero-photo,
+  .cover-collage .elsewhere-photo-frame {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  .cover-collage .elsewhere-photo-frame img {
+    display: block !important;
+    width: 100% !important;
+    height: min(62vw, 245px) !important;
+    min-height: 0 !important;
+    max-height: 245px !important;
+    object-fit: cover !important;
+    object-position: center 44% !important;
+  }
+}
