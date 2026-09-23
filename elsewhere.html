@@ -171,19 +171,22 @@
       Things I have had too many thoughts about, written here so I don’t inflict them upon innocent bystanders.
      </p>
 
-     <div aria-label="Choose how many rambles to show" class="ramble-view-controls">
-      <span class="ramble-total-label">
-       RAMBLES · SHOW
+     <div aria-label="Choose how many rambles to show" class="ramble-view-controls" style="align-items: center; flex-direction: column; gap: 6px;">
+      <span class="ramble-total-label" style="margin-right: 0; text-align: center; font-size: 1.08em; font-weight: 700; letter-spacing: .03em;">
+       RAMBLES
       </span>
-      <button class="ramble-count active" data-count="5" type="button">
-       5
-      </button>
-      <button class="ramble-count" data-count="10" type="button">
-       10
-      </button>
-      <button class="ramble-count" data-count="all" type="button">
-       ALL
-      </button>
+      <div style="display: flex; align-items: center; gap: 8px;">
+       <span style="opacity: .65; margin-right: 4px;">SHOW</span>
+       <button class="ramble-count active" data-count="5" type="button">
+        5
+       </button>
+       <button class="ramble-count" data-count="10" type="button">
+        10
+       </button>
+       <button class="ramble-count" data-count="all" type="button">
+        ALL
+       </button>
+      </div>
      </div>
     </div>
     <!-- ============================================================
@@ -217,7 +220,7 @@
     <details class="recent-ramble ramble-item">
  <summary>
   <span class="recent-ramble-date">
-   23.09.26
+   24.09.26
   </span>
   <span class="recent-ramble-title">
    Chapman on Chapman
@@ -930,7 +933,7 @@
   const items = Array.from(document.querySelectorAll('.ramble-item'));
   const buttons = document.querySelectorAll('.ramble-count');
   const totalLabel = document.querySelector('.ramble-total-label');
-  if (totalLabel) totalLabel.textContent = `${items.length} RAMBLES · SHOW`;
+  if (totalLabel) totalLabel.textContent = `${items.length} RAMBLES & COUNTING`;
   function showRambles(value) {
     const limit = value === 'all' ? items.length : Number(value);
     items.forEach((item, i) => {
