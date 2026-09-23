@@ -7629,13 +7629,17 @@ body.elsewhere-page {
 
 .ramble-view-controls {
   width: fit-content;
-  padding: 7px;
+  padding: 10px 12px;
   border: 1px solid #8f7d70;
   background: #e5dac9;
+  font-size: 10px;
+}
+.ramble-view-controls .ramble-total-label {
+  font-size: 1.18em !important;
 }
 .ramble-count {
   border-color: transparent;
-  padding: 7px 12px;
+  padding: 8px 13px;
 }
 .ramble-count:hover,
 .ramble-count.active {
