@@ -8560,3 +8560,50 @@ body.elsewhere-page {
 @media (max-width: 430px) {
   .mobile-clock-out { font-size: 8px; gap: 5px; }
 }
+
+
+/* ==================================
+   MOBILE FOOTER CLOCK-OUT ENTRY
+   Replaces the old secret dot when the sidebar is hidden.
+================================== */
+.footer-clock-out {
+  display: none;
+}
+
+@media (max-width: 850px) {
+  .contact-signoff {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    gap: 18px;
+  }
+
+  .footer-clock-out {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-left: auto;
+    color: inherit;
+    font-family: "DM Mono", monospace;
+    font-size: 8px;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    text-decoration: none;
+    white-space: nowrap;
+  }
+
+  .footer-clock-out-dot {
+    width: 7px;
+    height: 7px;
+    flex: 0 0 7px;
+    border-radius: 50%;
+    background: currentColor;
+    opacity: .55;
+  }
+
+  .footer-clock-out:hover .footer-clock-out-dot,
+  .footer-clock-out:focus-visible .footer-clock-out-dot {
+    opacity: .9;
+  }
+}
