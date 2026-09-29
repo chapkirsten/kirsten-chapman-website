@@ -8703,3 +8703,71 @@ body.elsewhere-page {
     font-size: clamp(56px, 19vw, 78px);
   }
 }
+
+/* ==============================
+   RESEARCH PROJECT INTERACTIONS
+============================== */
+.project-card { cursor: pointer; position: relative; transition: background .2s ease, transform .2s ease; }
+.project-card:hover, .project-card:focus-visible { background: rgba(255,255,255,.045); outline: none; }
+.project-card:focus-visible { box-shadow: inset 0 0 0 2px var(--pink); }
+.project-card-action { margin-top: auto; padding-top: 28px; color: var(--pink); font: 500 9px "DM Mono", monospace; letter-spacing: .1em; text-transform: uppercase; }
+.project-card-action span { display: inline-block; margin-left: 5px; transition: transform .2s ease; }
+.project-card:hover .project-card-action span, .project-card:focus-visible .project-card-action span { transform: translateX(4px); }
+.project-card .card-bottom { margin-top: 18px; }
+
+.project-modal { position: fixed; inset: 0; z-index: 9999; display: none; }
+.project-modal.open { display: block; }
+.project-modal-backdrop { position: absolute; inset: 0; background: rgba(28,15,18,.72); backdrop-filter: blur(5px); }
+.project-modal-panel { position: absolute; top: 50%; left: 50%; width: min(760px, calc(100vw - 40px)); max-height: min(82vh, 820px); overflow-y: auto; transform: translate(-50%,-50%); background: var(--cream); color: var(--burgundy-dark); padding: clamp(32px,5vw,62px); border: 1px solid rgba(75,25,36,.18); box-shadow: 0 28px 80px rgba(0,0,0,.3); }
+.project-modal-close { position: absolute; top: 20px; right: 24px; border: 0; background: transparent; color: var(--burgundy-dark); font: 300 30px/1 "Inter", sans-serif; cursor: pointer; }
+.project-modal-kicker { margin: 0 0 14px; color: var(--oxblood); font: 500 9px "DM Mono", monospace; letter-spacing: .14em; text-transform: uppercase; }
+.project-modal h2 { margin: 0 45px 12px 0; font: 400 clamp(38px,5vw,62px)/.98 Georgia,serif; letter-spacing: -.035em; }
+.project-modal-intro { max-width: 620px; margin: 0 0 34px; font-size: 14px; line-height: 1.65; color: var(--muted); }
+.project-modal-section { border-top: 1px solid rgba(75,25,36,.18); padding-top: 22px; margin-top: 26px; }
+.project-modal-section > h3 { margin: 0 0 18px; font: 500 9px "DM Mono",monospace; letter-spacing: .14em; text-transform: uppercase; color: var(--oxblood); }
+.project-item + .project-item { margin-top: 24px; padding-top: 24px; border-top: 1px solid rgba(75,25,36,.11); }
+.project-item h4 { margin: 0 0 7px; font: 500 20px/1.2 "Newsreader",Georgia,serif; }
+.project-item p { margin: 0; font-size: 13px; line-height: 1.6; color: var(--muted); }
+.project-status { display: inline-block; margin: 0 0 9px; font: 500 8px "DM Mono",monospace; letter-spacing: .11em; text-transform: uppercase; color: var(--oxblood); }
+.project-citation { display: block; padding: 14px 0; border-bottom: 1px solid rgba(75,25,36,.11); color: inherit; text-decoration: none; }
+.project-citation:first-of-type { border-top: 1px solid rgba(75,25,36,.11); }
+.project-citation strong { display: block; margin-bottom: 4px; font: 500 14px/1.4 "Inter",sans-serif; }
+.project-citation span { font: 400 9px "DM Mono",monospace; letter-spacing: .06em; color: var(--muted); text-transform: uppercase; }
+.project-citation:hover strong { text-decoration: underline; text-underline-offset: 3px; }
+body.modal-open { overflow: hidden; }
+html[data-theme="dark"] .project-modal-panel { background: #211b1c; color: var(--cream); border-color: rgba(255,255,255,.14); }
+html[data-theme="dark"] .project-modal-close { color: var(--cream); }
+html[data-theme="dark"] .project-modal-intro, html[data-theme="dark"] .project-item p, html[data-theme="dark"] .project-citation span { color: #b9adaf; }
+html[data-theme="dark"] .project-modal-section, html[data-theme="dark"] .project-item + .project-item, html[data-theme="dark"] .project-citation { border-color: rgba(255,255,255,.12); }
+@media (max-width: 700px) { .project-modal-panel { width: calc(100vw - 22px); max-height: 88vh; padding: 36px 25px 30px; } .project-modal-close { top: 14px; right: 17px; } }
+
+
+/* Stronger affordance for clickable current-research cards */
+.project-card-action {
+  width: fit-content;
+  margin-top: 28px;
+  padding: 10px 13px;
+  border: 1px solid currentColor;
+  color: var(--pink);
+  font: 500 9px "DM Mono", monospace;
+  letter-spacing: .1em;
+  line-height: 1;
+  text-transform: uppercase;
+  transition: background .2s ease, color .2s ease, transform .2s ease;
+}
+.project-card-action span {
+  display: inline-block;
+  margin-left: 7px;
+  font-size: 12px;
+  transition: transform .2s ease;
+}
+.project-card:hover .project-card-action,
+.project-card:focus-visible .project-card-action {
+  background: var(--pink);
+  color: var(--black, #111);
+  transform: translateY(-1px);
+}
+.project-card:hover .project-card-action span,
+.project-card:focus-visible .project-card-action span {
+  transform: translate(2px, -2px);
+}

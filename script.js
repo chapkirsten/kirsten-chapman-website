@@ -831,3 +831,116 @@ if (backToTop) {
   updateBackToTop();
 
 }
+// --------------------------------
+// RESEARCH PROJECT MODALS
+// --------------------------------
+const projectData = {
+  privacy: {
+    kicker: "Privacy",
+    title: "When technology crosses a line.",
+    intro: "I study how people experience privacy violations, the harms that follow, and where existing privacy frameworks fail to capture those experiences.",
+    projects: [
+      { name: "Privacy incidents & harms", text: "A mixed-methods project examining how people describe privacy incidents and their consequences, with the goal of understanding where established privacy-harm taxonomies align with, or miss, lived experience." },
+      { name: "Privacy education for autistic adults", text: "Work examining how privacy education can better support autistic adults in recognizing and navigating privacy risks online." }
+    ],
+    pastProjects: [
+      { name: "Digital contact tracing & public-health privacy", text: "Research examining how people think about privacy, disclosure, and adoption of digital contact-tracing technologies in public-health contexts, including how political identity can shape willingness to adopt these systems." }
+    ],
+    publications: [
+      { title: "PRISM: Evaluating a Rule-Based, Scenario-Driven Social Media Privacy Education Program for Young Autistic Adults", meta: "CSCW · 2026", url: "https://dl.acm.org/doi/10.1145/3816987" },
+      { title: "A House Divided: How U.S. Politics Could Shape Contact-Tracing Adoption in Future Pandemics", meta: "CHI · 2025", url: "https://dl.acm.org/doi/full/10.1145/3706598.3713645" }
+    ]
+  },
+  ai: {
+    kicker: "Responsible AI",
+    title: "Who bears the AI harms we overlook?",
+    intro: "I study how generative AI systems affect people whose experiences are often overlooked in technology design and evaluation, and how those harms can be identified and measured more effectively.",
+    projects: [
+      { name: "Evaluating GenAI harms", text: "Developing approaches for identifying observable indicators of generative-AI harms, with a focus on autistic people and other populations whose experiences may not be captured by standard evaluation practices." },
+      { name: "Autism & generative-AI chatbots", text: "Research examining how autistic adults perceive and respond to persuasive generative-AI conversational agents, including their use in targeted advertising contexts." }
+    ],
+    pastProjects: [],
+    publications: [
+      { title: "Persuasiveness of Conversational Agents for Targeted Advertising: Autism and Gen-AI Chatbots", meta: "CSCW · 2025", url: "https://dl.acm.org/doi/abs/10.1145/3757645" }
+    ]
+  },
+  social: {
+    kicker: "Social Computing",
+    title: "Being human through a screen.",
+    intro: "I study how technology shapes communication, relationships, social cues, and the expectations people negotiate when interacting online.",
+    projects: [
+      { name: "Autistic adults & social media", text: "A longitudinal diary and interview study examining autistic adults’ day-to-day experiences with social media, including how platform use relates to social experiences and emotional outcomes." },
+      { name: "Autistic adults & online messaging", text: "Interview research exploring how autistic adults navigate online messaging, social expectations, communication norms, and the ways technologies can amplify or reduce communication challenges." }
+    ],
+    pastProjects: [],
+    publications: []
+  }
+};
+
+const projectModal = document.querySelector("#project-modal");
+const projectModalContent = document.querySelector("#project-modal-content");
+let projectModalTrigger = null;
+
+function projectModalMarkup(data) {
+  const projects = data.projects.map(project => `
+    <div class="project-item">
+      <h4>${project.name}</h4>
+      <p>${project.text}</p>
+    </div>`).join("");
+  const pastProjects = data.pastProjects?.length ? `
+    <div class="project-modal-section">
+      <h3>Past projects</h3>
+      ${data.pastProjects.map(project => `
+        <div class="project-item">
+          <h4>${project.name}</h4>
+          <p>${project.text}</p>
+        </div>`).join("")}
+    </div>` : "";
+  const publications = data.publications.length ? `
+    <div class="project-modal-section">
+      <h3>Related publications</h3>
+      ${data.publications.map(pub => `
+        <a class="project-citation" href="${pub.url}" target="_blank" rel="noopener">
+          <strong>${pub.title} ↗</strong>
+          <span>${pub.meta}</span>
+        </a>`).join("")}
+    </div>` : "";
+  return `
+    <p class="project-modal-kicker">${data.kicker}</p>
+    <h2 id="project-modal-title">${data.title}</h2>
+    <p class="project-modal-intro">${data.intro}</p>
+    <div class="project-modal-section">
+      <h3>Current projects</h3>
+      ${projects}
+    </div>
+    ${pastProjects}
+    ${publications}`;
+}
+
+function openProjectModal(card) {
+  if (!projectModal || !projectModalContent) return;
+  const data = projectData[card.dataset.project];
+  if (!data) return;
+  projectModalTrigger = card;
+  projectModalContent.innerHTML = projectModalMarkup(data);
+  projectModal.classList.add("open");
+  projectModal.setAttribute("aria-hidden", "false");
+  document.body.classList.add("modal-open");
+  projectModal.querySelector(".project-modal-close")?.focus();
+}
+function closeProjectModal() {
+  if (!projectModal) return;
+  projectModal.classList.remove("open");
+  projectModal.setAttribute("aria-hidden", "true");
+  document.body.classList.remove("modal-open");
+  projectModalTrigger?.focus();
+}
+
+document.querySelectorAll(".project-card").forEach(card => {
+  card.addEventListener("click", () => openProjectModal(card));
+  card.addEventListener("keydown", event => {
+    if (event.key === "Enter" || event.key === " ") { event.preventDefault(); openProjectModal(card); }
+  });
+});
+projectModal?.querySelectorAll("[data-modal-close]").forEach(el => el.addEventListener("click", closeProjectModal));
+document.addEventListener("keydown", event => { if (event.key === "Escape" && projectModal?.classList.contains("open")) closeProjectModal(); });
