@@ -944,3 +944,31 @@ document.querySelectorAll(".project-card").forEach(card => {
 });
 projectModal?.querySelectorAll("[data-modal-close]").forEach(el => el.addEventListener("click", closeProjectModal));
 document.addEventListener("keydown", event => { if (event.key === "Escape" && projectModal?.classList.contains("open")) closeProjectModal(); });
+
+
+// CSCW 2026 photo gallery
+(() => {
+  const openButton = document.getElementById('cscw-gallery-open');
+  const gallery = document.getElementById('cscw-gallery');
+  if (!openButton || !gallery) return;
+  const photos = [
+    ['images/cscw-prism-team.jpg', 'PRISM presentation with colleagues'],
+    ['images/cscw-student-volunteers.jpg', 'CSCW 2026 student volunteer team'],
+    ['images/cscw-privacy-workshop.jpg', 'Privacy research workshop in progress'],
+    ['images/cscw-prism-presentation.jpg', 'Presenting PRISM at CSCW 2026'],
+    ['images/cscw-organizing-team.jpg', 'CSCW 2026 organizing team dinner']
+  ];
+  const img = document.getElementById('cscw-gallery-image');
+  const caption = document.getElementById('cscw-gallery-caption');
+  const count = document.getElementById('cscw-gallery-count');
+  const close = gallery.querySelector('.cscw-gallery-close');
+  let current = 0;
+  function render() { img.src = photos[current][0]; img.alt = photos[current][1]; caption.textContent = photos[current][1]; count.textContent = `${current + 1} / ${photos.length}`; }
+  function dismiss() { gallery.hidden = true; document.body.style.overflow = ''; openButton.focus(); }
+  openButton.addEventListener('click', () => { current = 0; render(); gallery.hidden = false; document.body.style.overflow = 'hidden'; close.focus(); });
+  close.addEventListener('click', dismiss);
+  gallery.querySelector('.cscw-gallery-prev').addEventListener('click', () => { current = (current - 1 + photos.length) % photos.length; render(); });
+  gallery.querySelector('.cscw-gallery-next').addEventListener('click', () => { current = (current + 1) % photos.length; render(); });
+  gallery.addEventListener('click', e => { if (e.target === gallery) dismiss(); });
+  document.addEventListener('keydown', e => { if (gallery.hidden) return; if (e.key === 'Escape') dismiss(); if (e.key === 'ArrowLeft') { current = (current - 1 + photos.length) % photos.length; render(); } if (e.key === 'ArrowRight') { current = (current + 1) % photos.length; render(); } });
+})();

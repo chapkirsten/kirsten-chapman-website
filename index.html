@@ -217,6 +217,16 @@
     </p>
 </div>
 <div class="news-list" id="recent-news">
+<!-- OCTOBER 2026 -->
+<article class="news-item" data-date="2026-10-17">
+<div class="news-date"><span class="news-month">OCT</span><span class="news-year">2026</span></div>
+<div class="news-content">
+<span class="news-category">CONFERENCE</span>
+<h3>That's a wrap on CSCW 2026!</h3>
+<p>I had a wonderful time serving as an SV Co-Chair, co-organizing a workshop on the future of privacy research, and presenting our PRISM paper. Thanks to everyone who made the week so memorable!</p>
+<button type="button" class="news-photo-link" id="cscw-gallery-open" aria-haspopup="dialog">View photos (5) ↗</button>
+</div>
+</article>
 <!-- MAY 2026 -->
 <article class="news-item" data-date="2026-05-31">
 <div class="news-date">
@@ -471,7 +481,16 @@
   </a>
 </div>
 </main>
-<script src="script.js?v=11"></script>
+
+<!-- CSCW 2026 PHOTO GALLERY -->
+<div class="cscw-gallery" id="cscw-gallery" role="dialog" aria-modal="true" aria-label="CSCW 2026 photo gallery" hidden>
+  <div class="cscw-gallery-panel">
+    <div class="cscw-gallery-top"><span>CSCW 2026 · PHOTOS</span><button type="button" class="cscw-gallery-close" aria-label="Close gallery">✕</button></div>
+    <div class="cscw-gallery-main"><button type="button" class="cscw-gallery-prev" aria-label="Previous photo">←</button><img id="cscw-gallery-image" alt=""><button type="button" class="cscw-gallery-next" aria-label="Next photo">→</button></div>
+    <div class="cscw-gallery-bottom"><span id="cscw-gallery-caption"></span><span id="cscw-gallery-count"></span></div>
+  </div>
+</div>
+<script src="script.js?v=12"></script>
 <!-- Cloudflare Web Analytics -->
 <script data-cf-beacon='{"token": "c75ca6f7cf0b4331afd3707bc6c81db9"}' src="https://static.cloudflareinsights.com/beacon.min.js" type="module"></script>
 <!-- End Cloudflare Web Analytics -->
