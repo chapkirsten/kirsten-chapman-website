@@ -952,7 +952,7 @@ document.addEventListener("keydown", event => { if (event.key === "Escape" && pr
   const gallery = document.getElementById('cscw-gallery');
   if (!openButton || !gallery) return;
   const photos = [
-    ['images/cscw-prism-team.jpg', 'PRISM presentation with colleagues'],
+    ['images/cscw-prism-team.jpg', 'PRISM presentation with co-authors'],
     ['images/cscw-student-volunteers.jpg', 'CSCW 2026 student volunteer team'],
     ['images/cscw-privacy-workshop.jpg', 'Privacy research workshop in progress'],
     ['images/cscw-prism-presentation.jpg', 'Presenting PRISM at CSCW 2026'],
